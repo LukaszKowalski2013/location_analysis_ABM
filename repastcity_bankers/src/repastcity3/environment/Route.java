@@ -1668,6 +1668,7 @@ class BuildingsOnRoadCache implements Serializable {
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressWarnings("resource")
 	public synchronized static BuildingsOnRoadCache getInstance(Geography<Building> buildingEnv, File buildingsFile,
 			Geography<Road> roadEnv, File roadsFile, File serialisedLoc, GeometryFactory geomFac) throws Exception {
 		double time = System.nanoTime();
@@ -1934,6 +1935,7 @@ class NearestRoadCoordCache implements Serializable {
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressWarnings("resource")
 	public synchronized static NearestRoadCoordCache getInstance(Geography<Building> buildingEnv, File buildingsFile,
 			Geography<Road> roadEnv, File roadsFile, File serialisedLoc, GeometryFactory geomFac) throws Exception {
 		double time = System.nanoTime();

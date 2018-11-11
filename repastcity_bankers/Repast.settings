@@ -12,6 +12,6 @@
     <string>SettingsRegistryId</string>
     <string>Repast.registry</string>
     <string>LastLoadedScenario</string>
-    <string>F:\fire_java\lastLunaSportABM\repastcity_bankers\repastcity3.rs</string>
+    <string>F:\fire_java\location_analysis_ABM\repastcity_bankers\repastcity3.rs</string>
   </hashtable>
 </simphony.settings.SettingsRegistry>

@@ -15,11 +15,6 @@
 			<location>C:/Users/Melkor/.groovy/greclipse/global_dsld_support</location>
 		</link>
 		<link>
-			<name>.link2</name>
-			<type>2</type>
-			<location>C:/RepastSimphony-2.3.1/eclipse/plugins/org.codehaus.groovy_2.3.7.xx-201411061335-e44-RELEASE/plugin_dsld_support</location>
-		</link>
-		<link>
 			<name>.link4</name>
 			<type>2</type>
 			<location>C:/Users/Melkor/.groovy/greclipse/global_dsld_support</location>
