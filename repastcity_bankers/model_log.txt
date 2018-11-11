@@ -1,32 +1,6 @@
-lis 11, 2018 9:23:29 PM repastcity3.main.ContextManager testEnvironment
+lis 11, 2018 9:43:12 PM repastcity3.main.ContextManager testEnvironment
 FINE: Testing the environment
-lis 11, 2018 9:23:29 PM repastcity3.agent.AgentFactory createRandomAgents
+lis 11, 2018 9:43:12 PM repastcity3.agent.AgentFactory createRandomAgents
 INFO: Creating 4369 agents using random method.
-lis 11, 2018 9:23:30 PM repastcity3.main.ContextManager createSchedule
+lis 11, 2018 9:43:12 PM repastcity3.main.ContextManager createSchedule
 FINE: The single-threaded scheduler will be used.
-lis 11, 2018 9:25:09 PM repastcity3.main.ContextManager updateRealTime
-INFO: Simulating day 1
-lis 11, 2018 9:25:09 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 1441.0. Speed: 1.541967909032E9sec/ticks.
-lis 11, 2018 9:26:39 PM repastcity3.main.ContextManager updateRealTime
-INFO: Simulating day 2
-lis 11, 2018 9:26:39 PM repastcity3.main.ContextManager printTicks
-INFO: Iterations: 2882.0. Speed: 90.335sec/ticks.
-lis 11, 2018 9:27:34 PM repastcity3.main.ContextManager outputAgentsData
-INFO:  chosenLocation, 42.0
- numberOfRuns, 1
- coolingVariableCar, 0.1
- coolingVariableBus, 0.5
- minRankCar, 0.00985
- minRankBus, 0.00799
- trafficImpact, 0.1
- busStopDistanceImpact, 150.0
-Happyagents, 4127
- sadOnes, 242
-END_TIME, 10000
- car correlation, 0.7788948796232411
- bus correlation, 0.91964953474211
-ChiSquareTest, 23.179422868468556
-carCorrSpearman, 0.883829172301718
-busCorrSpearman, 0.9581010095306072
-simChi2: [406, 2094, 1125, 123, 353, 26]
