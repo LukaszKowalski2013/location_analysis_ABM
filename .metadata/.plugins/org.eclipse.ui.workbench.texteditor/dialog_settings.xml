@@ -2,12 +2,14 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Spearm" key="selection"/>
+		<item value="tEle" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="true" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="teleport"/>
+			<item value="csv"/>
 			<item value="spearm"/>
 			<item value="chi2"/>
 			<item value="outputAgentsData"/>
