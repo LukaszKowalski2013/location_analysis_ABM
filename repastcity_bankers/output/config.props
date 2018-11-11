@@ -1,0 +1,9 @@
+model.archive = F:/swiat_gis/ABM_workspace/Indigo/IndigoSportABM/repastcity_bankers/output/complete_model.jar
+batch.params.file = scenario.rs/batch_params.xml
+ssh.key_dir = C:/Users/Melkor/.ssh
+poll.frequency = 60.0
+model.output = F:/swiat_gis/ABM_workspace/Indigo/IndigoSportABM/repastcity_bankers/output
+
+vm.arguments = -Xmx512M
+local.0.instances = 1
+local.0.working_directory = C:/Users/Melkor/AppData/Local/Temp/

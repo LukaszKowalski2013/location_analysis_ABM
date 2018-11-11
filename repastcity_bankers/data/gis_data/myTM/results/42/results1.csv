@@ -1,0 +1,17 @@
+ chosenLocation, 42.0
+ numberOfRuns, 1
+ coolingVariableCar, 0.1
+ coolingVariableBus, 0.5
+ minRankCar, 0.00985
+ minRankBus, 0.00799
+ trafficImpact, 0.1
+ busStopDistanceImpact, 150.0
+Happyagents, 4127
+ sadOnes, 242
+END_TIME, 10000
+ car correlation, 0.7788948796232411
+ bus correlation, 0.91964953474211
+ChiSquareTest, 23.179422868468556
+carCorrSpearman, 0.883829172301718
+busCorrSpearman, 0.9581010095306072
+simChi2: [406, 2094, 1125, 123, 353, 26]

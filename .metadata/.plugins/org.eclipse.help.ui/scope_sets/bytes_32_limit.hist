@@ -1,0 +1,5 @@
+#Mon Apr 18 11:34:37 CEST 2016
+__DEFAULT__=false
+org.eclipse.sdk.Eclipse.master=true
+org.eclipse.help.ui.localSearch.master=true
+expression=bytes limit

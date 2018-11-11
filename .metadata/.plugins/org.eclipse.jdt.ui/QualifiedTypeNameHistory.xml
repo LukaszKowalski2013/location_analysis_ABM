@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="au.com.bytecode.opencsv.CSVWriter"/>
+<fullyQualifiedTypeName name="repast.simphony.runtime.RepastBatchMain"/>
+<fullyQualifiedTypeName name="repast.simphony.batch.setup.RemoveTransferFromRemoteNodes"/>
+<fullyQualifiedTypeName name="org.apache.commons.math3.stat.correlation.SpearmansCorrelation"/>
+<fullyQualifiedTypeName name="java.lang.management.ManagementFactory"/>
+<fullyQualifiedTypeName name="org.apache.commons.math3.stat.inference.ChiSquareTest"/>
+<fullyQualifiedTypeName name="repastcity3.environment.contexts.BuildingContext"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="repastcity3.main.GlobalVars"/>
+</qualifiedTypeNameHistroy>

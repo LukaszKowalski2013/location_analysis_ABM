@@ -1,0 +1,569 @@
+/*
+©Copyright 2012 Nick Malleson
+This file is part of RepastCity.
+
+RepastCity is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+RepastCity is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with RepastCity.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package repastcity3.agent;          
+
+import java.lang.reflect.Array;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import repast.simphony.engine.schedule.ScheduledMethod;
+import repast.simphony.random.RandomHelper;
+import repastcity3.environment.Building;
+import repastcity3.environment.Route;
+import repastcity3.main.ContextManager;
+import repastcity3.main.GlobalVars;
+import repastcity3.main.MyMatrixes;
+
+public class DefaultAgent implements IAgent {
+
+	private static Logger LOGGER = Logger.getLogger(DefaultAgent.class
+			.getName());
+
+	private Building home; // Where the agent lives
+	//private Building workplace; // Where the agent works
+	private Route route; // An object to move the agent around the world
+	private String transport = ""; 
+	private List<String> transportAvailable = null;
+
+	//private boolean goingHome = false; // Whether the agent is going to or from
+	// their home
+
+	private static int uniqueID = 0;
+	private int id;
+
+	
+	private int whereAmI=0; // This variable says where this agent is.
+	//0 - home, 1 - work, 2 - club, 3 - on the way.
+
+	private double myFavouriteClub=0.0; //myId index and at the same time it can be index of row in sRanking array
+	int numberOfClubChanges=0; //this variable is to report number agents who changed their favourite club
+	double coolingVariable=GlobalVars.coolingVariable; //variable is used to decrease Ranking of a club if agent can't enter there
+	double minRank=GlobalVars.minRank; //if agent's best club has 3-ranking in sRanking below this value, agent stays home 
+	
+	private double myTimeOfDeparture;
+	private double myTimeAtClub;
+	private int fireOnce = 1; //0-no, 1-yes
+	
+	private double myTime1; //taken from Shapefile; it is myTime
+	private double myTime2; //taken from Shapefile; it is myTime
+	private double[] myTimeList = {myTime1, myTime2};
+	int traffic; // it is used to set if there is traffic in city centre or not. It can be 0 or 1.
+	private int practicedToday=0;
+	// 0-starting point, 1-he practiced 2-he was waiting (he didn't practiced)
+	private boolean heCanGo=true;//this is set by Context Manager, I added it because it is convenient for me to control departure time of an by 'theTime>myTime' (theTime cannot be used with ==) 
+	
+	//KEJ+ MY VARIABLES hold in myRanking
+//	sRanking indexes: 0- myId 1-idClub 2-myHour 3-ranking 4-HCkm 5-HCmin 6-howCrowded (in persons per place) 7-accessTime 8-initialRanking (based on distance equation)
+	private double[][] sRanking =new double[GlobalVars.numberOfPools*myTimeList.length][9];
+	private double[][] sRanking2 =new double[GlobalVars.numberOfFitness*myTimeList.length][9]; //temp for fitness
+	
+	Building[] allClubs =new Building[GlobalVars.numberOfPools]; //KEJ+ an array of all clubs
+	Building[] allClubs2 =new Building[GlobalVars.numberOfFitness]; //TEMP for fitness [or for fitter :)]
+	
+	private double ZONE_ID;//taken from Shapefile 
+	
+	// sRanking => ranking of swimming pools (20); [9] because there are 9 columns (see below);
+	//1st equation in [] is like this because number of rows is multiplyed by hours which agent check
+	// - so every club is present there twice, when agent have to check 2 option of hours.
+
+	private int myRowInMatrix;
+	private int myColInMatrix;
+	
+	private String mySport=GlobalVars.mySport; //s - swimming, f - fitness
+
+	public DefaultAgent() { //bankers change. CONSTRUCTOR.
+		this.id = uniqueID++;
+
+		// Find a building that agents can use as their workplace. First, iterate over all buildings in the model (there should be less than 10 000)
+		// populate 2 arrays of clubs.
+		int i=0;
+		int j=0; //temp for fitness
+		for (Building b:ContextManager.buildingContext) {
+			//make a list of all clubs & populate idClub column in sRanking
+			//1 swimming pools
+			if (b.getType()==3 && b.getSwimming()==1 && b.getClubID()<3000) {
+				allClubs[i]= b;
+
+				//here we populate myId column (index 0)
+				sRanking[i][0]=i;
+				sRanking[GlobalVars.numberOfPools+i][0]=GlobalVars.numberOfPools+i;				
+				
+				//here we populate idClub column (index 1)			
+				sRanking[i][1]=b.getClubID();
+				sRanking[GlobalVars.numberOfPools +i][1]=sRanking[i][1];
+				i++;
+			}
+			
+			//2 fitness clubs
+			if (b.getType()==3 && b.getFitness()==1 && b.getClubID()<3000) {
+				allClubs2[j]= b;
+
+				//here we populate myId column (index 0)
+				sRanking2[j][0]=j;
+				sRanking2[GlobalVars.numberOfFitness+j][0]=GlobalVars.numberOfFitness+j;				
+				
+				//here we populate idClub column (index 1)			
+				sRanking2[j][1]=b.getClubID();
+				sRanking2[GlobalVars.numberOfFitness +j][1]=sRanking2[j][1];
+				j++;
+			}
+
+		} //end of for reading buildings loop
+
+
+//		checkMyRanking();
+		
+//		if (this.id==13){
+//		System.out.print(Arrays.deepToString(sRanking2));
+//		}
+		
+	} //end of constructor
+
+	// Kej+ STEP - AGENT CONTROL
+
+	@Override
+	public void step() throws Exception {
+		// step is done in 3 parts: 1. Checks where am I 2. if at destination do sth 3. else: travel
+
+		// 1.  See what the time is, this will determine what the agent should be doing. The BigDecimal stuff
+		// is just to round the time to 5 decimal places, otherwise it will never be exactly 9.0 or 17.0.
+//		double theTime = BigDecimal.valueOf(ContextManager.realTime).round(new MathContext(2,RoundingMode.HALF_UP)).doubleValue();
+		 //performance optimisation point - can we move it to ContextManager? agent's actions are not controlled by time here //Kej+ I changed from 5 to 2
+		
+		if (fireOnce==1){
+			myRankingUpdate(transport.contains("car")); //it should stay as it is - if there is no car- agent should travel by bus
+////			sRanking[1][5]= Route.getRouteDistance(this, this.allClubs[whatsClubIndexInAllClubs(1)].getCoords(), this.allClubs[whatsClubIndexInAllClubs(1)])[1];
+			
+			whatsMyFavouriteClub(); // my 1st favourite club
+			fireOnce--;
+			
+			//calculate ranking list
+			//set departure time for 1st club
+						
+//			checkMyRanking();
+		}
+
+		// 2. IS HE HOME? //TEMP add practicedToday option, so he doesn't have to check time, when he's home
+		if (whereAmI==0 && practicedToday==0 && heCanGo){
+			if (sRanking[(int)myFavouriteClub][3] > minRank){
+				
+				if (ContextManager.realTime > sRanking[(int)myFavouriteClub][2]) { // I assume at 4pm he goes to club or home //Kej+potential optimisation point
+					this.route = new Route(this, this.allClubs[whatsClubIndexInAllClubs(myFavouriteClub)].getCoords(),
+							this.allClubs[whatsClubIndexInAllClubs(myFavouriteClub)]); // Create a route home
+					whereAmI=3; // he is on his WAY now; 3 = agent is changing his location to route
+					myTimeOfDeparture=ContextManager.realTime;
+					heCanGo=false;
+				}
+			}
+		}
+
+		// 3. IS HE FINISHED AT CLUB? SORTING MECHANISM, 2/2. Check if they finished their sport practice //TEMP IT CAN BE SHORTER
+		else if(whereAmI==2){ // IT WAS myTimeAtClub before INSTEAD of myTime2 
+
+			//agents, who did not practiced sport today change their ranking (only for some agents) (controlled by club)
+			if (practicedToday==1){ //yes. he practiced
+				//don't change ranking, go home
+				
+				// note down crowd (later on - other things)
+//				sRanking[(int)myFavouriteClub][6]=allClubs[whatsClubIndexInAllClubs(myFavouriteClub)].howCrowdedWasIt(); //crowd
+				
+				whereAmI=3;
+				practicedToday=0;
+				this.route = new Route(this, this.home.getCoords(), this.home);
+			}
+
+			if (practicedToday==2){ //no. he has just waited and didn't practiced
+				// note down accessTime & crowd (later on - other things)
+				sRanking[(int)myFavouriteClub][7]= 1; //TEMP 1 should be changed to real accessTime
+				sRanking[(int)myFavouriteClub][6]=allClubs[whatsClubIndexInAllClubs(myFavouriteClub)].howCrowdedWasIt(); //crowd// right now I use it just for information
+				// agent didn't get in, so we decrease value of his favouriteClub by cooling variable value 
+				sRanking[(int)myFavouriteClub][3]-=coolingVariable;
+				if(sRanking[(int)myFavouriteClub][3]<0){//we don't want negative values in ranking points
+					sRanking[(int)myFavouriteClub][3]=0;
+				}
+				
+				whatsMyFavouriteClub(); //CLUB CHANGE//GO TO THE HEART OF MY ABM
+				whereAmI=3;
+				practicedToday=0;
+				this.route = new Route(this, this.home.getCoords(), this.home);
+
+				//temp// delay of exit time is 2 minutes now = .033 of an hour at theTime
+				//this should be rather: if (hourOfResetEntries==myTime1){iterate through allClubs and raport its crowd - isn't it deleted at this time?}
+				//else if [same but 4 myTime2].
+
+//				System.out.print(ContextManager.hourOfResetEntries + " "); at what time there is reset
+//				checkMyRanking();
+			}
+		}
+
+		if (this.route == null) {
+		} // Don't do anything if a route hasn't been created.
+
+		//		4. if agent reached his destination, he has to do: 
+		else if (this.route.atDestination()) {
+			// Have reached our destination, lets delete the old route (more efficient).t
+						
+			this.route = null;
+			int myClubIndexInAllClubs=whatsClubIndexInAllClubs(myFavouriteClub);
+
+			//4A. AM I AT CLUB? 
+			if (allClubs[myClubIndexInAllClubs].getCoords() 
+					== ContextManager.getAgentGeometry(this).getCoordinate()){
+				//if agent is by the club, he checks if he can enter (if not => he goes home, if yes - he stay there for 1 hour)
+
+				if (!allClubs[myClubIndexInAllClubs].isAgentAtThisClub(this)){ //check if he can enter 
+					//TEMP THERE WAS, allClubs[myClubIndexInAllClubs].mayIenter() &&
+					//HE ENTERS THE CLUB
+					whereAmI=2;
+					allClubs[myClubIndexInAllClubs].addAgent(this);
+					allClubs[myClubIndexInAllClubs].clientEntry(); //add up client entry
+					myTimeAtClub=ContextManager.realTime;
+					double accessTime=0; //TEMP it should be taken from club
+					//note down accessTime and HCmin in sRanking
+					sRanking[(int)myFavouriteClub][7]= accessTime; //TEMP 1 should be changed accessTime
+					sRanking[(int)myFavouriteClub][5]=Math.round((myTimeAtClub-myTimeOfDeparture)*60); // temp, watch out, performace optimisation point
+
+//					System.out.print("\n"+"HOP ");
+//					System.out.print("agent " + this.id + " got here in (h): ");
+//					System.out.printf("%.2f", (ContextManager.realTime-myTimeOfDeparture));
+//					
+//					System.out.print(" and traveled: ");
+//					System.out.printf("%.2f",HC);
+				}
+			}
+
+			//4B. AM I HOME?
+			else { //if (this.home.getCoords() == ContextManager.getAgentGeometry(this).getCoordinate())
+				whereAmI=0;
+//				checkMyRanking();// show sRanking at the end of the day
+			}
+
+		} // end of if ...atDestination
+
+		//		5. TRAVEL
+		else {
+			// Otherwise travel towards the destination
+			this.route.travel();
+
+		} // else
+
+	}// step()
+
+	//MY METHOD, SETTERS AND GETTERS
+
+	/**
+	 * There will be no inter-agent communication so these agents can be
+	 * executed simulataneously in separate threads.
+	 */
+	@Override //KEJ+ I changed it
+	public final boolean isThreadable() {
+		return false;
+	}
+
+	@Override
+	public void setHome(Building home) { //there should be error here
+		this.home = home;
+	}
+
+	@Override
+	public Building getHome() {
+		return this.home;
+	}
+
+	@Override
+	public <T> void addToMemory(List<T> objects, Class<T> clazz) {
+	}
+
+	@Override
+	public List<String> getTransportAvailable() {
+		//List<String> myTransport = new ArrayList<String>();
+		//myTransport.add("bus");
+		return this.transportAvailable; //IT SHOULD BE WRITTEN IN PEOPLE SHAPEFILE
+	} //	return null;
+
+	// return new Arrays.asList(new String[]{"car", "bus"});
+	
+	@Override
+	public boolean isAvailableTransport(String transport1){ //I added it so IAgent can read it
+		return transport.contains(transport1);
+	}
+
+	@Override
+	public String toString() {
+		return "Agent " + this.id;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof DefaultAgent))
+			return false;
+		DefaultAgent b = (DefaultAgent) obj;
+		return this.id == b.id;
+	}
+
+	@Override
+	public int hashCode() {
+		return this.id;
+	}
+
+	public void setTransport(String transport) {
+		this.transport=transport;
+		this.transportAvailable = Arrays.asList( this.transport.split("\\s+")); //it splits a string because 1 agent can use at least 2 modes of transport (walk + sth else).
+		System.out.print(this.id+":"+this.transport+" - "+this.transportAvailable.toString()); //check
+	}
+	public String getTransport() {
+		return this.transport;
+	}
+	
+	public void setZONE_ID(double ZONE_ID){
+		this.ZONE_ID = ZONE_ID;}
+	public double getZONE_ID(){
+		return ZONE_ID;	}
+
+	
+	public void setMyTime1(double myTime1){
+		this.myTime1 = myTime1;}
+	public double getMyTime1(){
+		return this.myTime1;	}
+
+	public void setMyTime2(double myTime2){
+		this.myTime2 = myTime2;}
+	public double getMyTime2(){
+		return this.myTime2;	}
+	
+	
+	//get sRanking 
+	public double[][] getAgentsSRanking(){
+		return this.sRanking;
+	}
+	//get favourite club row
+	public int getAgentsFavouriteClub(){
+		return (int)this.myFavouriteClub;
+	}
+	
+	
+	//Kej+how to get to club with id X  //WARNING, THIS OPTION IS ONLY FOR TWO myHour
+	public int whatsClubIndexInAllClubs(double myId){
+		int searchedIndex=-1;
+		for (int s=0; s< sRanking.length; s++) { 
+			// check if the building is a club
+
+			if (myId==sRanking[s][0]){
+				if (s>19){
+					searchedIndex=s-GlobalVars.numberOfPools;
+				}
+				else{
+					searchedIndex=s;
+				}
+			}
+		}
+		return searchedIndex;
+	}
+
+	public double whatsMyFavouriteClub(){
+//		if (numberOfClubChanges<7){ //7 says that each agent can change his club max 7 times. why the hell only 7?
+			double sumOfRankingPoints=0;
+			
+		for (int f=0; f<sRanking.length;f++){
+
+			sumOfRankingPoints +=sRanking[f][3];
+		}
+		
+		//here we're looking for the best club, based on ranking points in column 3, which play role of weights, so this is random search based on probability
+		double p=Math.random()*sumOfRankingPoints;
+		double countWeight =0;
+        for (int f=0; f<sRanking.length;f++) {
+        		countWeight += sRanking[f][3];
+            if (countWeight >= p){
+//            	System.out.print(" hurra!!!"+ f + " ");
+            	myFavouriteClub=f;
+            	break;
+            }
+        }
+
+		return myFavouriteClub;
+		
+	}
+	
+	//check if Ranking is OK
+	private void checkMyRanking(){
+		String check = Arrays.deepToString(sRanking); //temp for fitness it should be sRanking2 TO COUNT FITNESS
+		LOGGER.log(Level.INFO, "Agent " + this.toString() + "has favourite club with myId: "+ myFavouriteClub+
+				" and has ranking list of all clubs which is: " + check) ;
+	}
+
+
+	public void setPracticedToday(int b){
+		practicedToday=b;
+	}
+
+//	public void setMyDistance(double myDistance){
+//		HC= myDistance;
+//	}
+	private void setMyRowInMatrix(double[][] matrix){
+		for (int f=0; f<matrix.length;f++){
+			if (ZONE_ID == matrix[f][0]){ //3-ranking
+				myRowInMatrix=f;//TEMP. SEARCH FOR THE LOWEST NUMBER (=highest position in ranking) and make it favourite myId
+			}
+		}
+	}
+	
+	private void setMyColInMatrix(double[][] matrix, int sRankingClubIndex){
+		
+		int c=1; //clubID starts here
+		boolean found=false;
+		while (!found && c< matrix[0].length){
+			if(matrix[0][c]==sRanking[sRankingClubIndex][1]){
+				found=true;
+				myColInMatrix=c;//sRanking[c][6]=inputArray[r][1];					
+			}
+			else{
+				c++;
+			}
+		}
+	}
+	
+	//TODO find my col in matrix
+//	private int
+
+	// this method is called to populate ranking with HCkm
+	private void myRankingUpdate(boolean doesHeHasACar){
+		//		double [379][21] myHCMatrix;
+		//		double [379][21] myrankMatrix;
+
+		double[][] myHCMatrix = null;
+		double[][] myrankMatrix=null;
+		double myspeed = 0;
+		int i; //col in matrix
+		//TODO swimming fitness split
+		//here we check if agent uses car - unless he uses bus
+		if (doesHeHasACar){
+			myHCMatrix = MyMatrixes.MatrixHCkmSWIM_AUTO; //it should be changed for fitness
+			myrankMatrix= MyMatrixes.MatrixrankSWIM_AUTO; //it should be changed for fitness
+			myspeed=33.8; //car speed in km/h
+		}
+		else if (!doesHeHasACar){
+			myHCMatrix = MyMatrixes.MatrixHCkmSWIM_MPK; //it should be changed for fitness
+			myrankMatrix= MyMatrixes.MatrixrankSWIM_MPK; //it should be changed for fitness
+			myspeed=22.3; //bus speed in km/h
+		}
+		
+		setMyRowInMatrix(myHCMatrix); 
+		
+		//filling out the rest of fields of sRanking
+		for (int s=0; s< sRanking.length; s++) {
+			
+			
+
+			setMyColInMatrix(myHCMatrix, mySport);
+			
+			
+			
+			//8 - initialRanking (number of points based on distance
+			sRanking[s][8] = myrankMatrix[myRowInMatrix][i];
+
+			// 4 - HCkm
+			sRanking[s][4] =myHCMatrix[myRowInMatrix][i];
+
+			//	System.out.print(ZONE_ID+" "); 
+			// 5 - HCmin
+			sRanking[s][5]= Math.round((sRanking[s][4]/myspeed)*60); // it is in min. Watch out, if you want to sync it with myTime
+
+
+
+			// 2 - myHour step 1/2
+			if (s<GlobalVars.numberOfPools){
+			sRanking[s][2]=myTime1;}
+			else{
+			sRanking[s][2]=myTime2;}
+			
+			//setting Traffic for cars in city centre, based on paid parking area (10:00 - 20:00)
+			if ((sRanking[s][2]>19.5 || sRanking[s][2]<10.5 ) && doesHeHasACar){ //19:30 because it is the time when the trip starts 
+				//- this function goes before myHour, because right now it shows myTime1
+				traffic = 0;	}
+			else{
+				traffic=1;	}
+			
+			// 7 - accessTime
+			if (doesHeHasACar) { //if agent doesn't have a car, he travels by bus.
+				sRanking[s][7]= (this.allClubs[whatsClubIndexInAllClubs(s)].GetAccessCar() / 150.0)*traffic;}
+			//FOR CAR DRIVERS: 7th col is divided by 150, because for every 15 minutes
+			//of access time we loose 10% of probability in Ranking, but for cars after which myHour is >18 it doesn't apply
+			//right now it gives only result of 0.1, but in future in can be changed to more realistic measure of the traffic
+			else if(!doesHeHasACar){
+				sRanking[s][7]= (this.allClubs[whatsClubIndexInAllClubs(s)].GetAccessBus() +home.GetAccessBus())/100.0;
+			//FOR BUS RIDERS: we divided it by 100, because for every 10 minutes we loose 10% of probability in Ranking
+			}
+			// 2 - myHour step 2/2
+			sRanking[s][2]= (double) Math.round( (sRanking[s][2] - sRanking[s][5]/60) * 100) / 100 ;
+			// We subtract time needed to get to club from myHour (time when agent has to be in club)
+			//strange thing here is that still agents time calculated this way is longer then time calculated by departureTime and arrivalTime
+			//which means we have to control situation when agents want to get to the club too early - in order not to spoil crowd coefficient calculation,
+			//which is heart of this ABM
+			
+			//STARTING POINT OF 3-RANKING
+			//3-ranking (in number of points)
+			sRanking[s][3] =  Math.round( ( myrankMatrix[myRowInMatrix][i]- sRanking[s][7]) * 1000)  / 1000.0 ;
+			//this initial ranking is based on distance [myRowInMatrix] and accesTime 
+			if (sRanking[s][3]<0){
+				sRanking[s][3]=0;
+			}
+
+			i++;
+		}
+	}
+	
+	public void setHeCanGo(){
+		heCanGo=true;
+	}
+		
+	// NOT USED NOW
+	//this method is called to set global knowledge about crowd in clubs - it should greatly decrease number of iterations
+	// it isn't very behavioural method, though
+	public void setCrowdAwareness(double[][] inputArray, double inputHourOfResetEntries){
+		for (int i=0; i<sRanking.length;i++){
+			// should be sth like this, but with correct hour: if (inputHourOfResetEntries==sRanking[i][2]){
+			//find a value of idClub in inputArray and set it to x variable
+			int r=0;
+			boolean found=false;
+			while (!found && r<inputArray.length){
+				if(inputArray[r][0]==sRanking[i][1]){
+					found=true;
+					sRanking[i][6]=inputArray[r][1];					
+				}
+				else{
+					r++;
+				}
+			}
+
+		}
+	}
+
+	
+} //defaultAgent
+
+
+
+
