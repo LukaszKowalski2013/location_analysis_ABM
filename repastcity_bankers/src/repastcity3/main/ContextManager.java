@@ -175,14 +175,22 @@ public class ContextManager implements ContextBuilder<Object> {
 			throw new RuntimeException("Could not read model properties,  reason: " + ex.toString(), ex);
 		}
 		
-		
+		try {
+			setMyParameters();
+		} catch (NumberFormatException e1) {
+			e1.printStackTrace();
+		} catch (ParameterNotFoundException e1) {
+			e1.printStackTrace();
+		}// here we set all parameters in GlobalVars
 		
 		// Configure the environment
 		String gisDataDir = ContextManager.getProperty(GlobalVars.GISDataDirectory);
 		if (GlobalVars.loggerOn) {
 			LOGGER.log(Level.FINE, "Configuring the environment with data from " + gisDataDir);
 		}
+		
 
+		
 		try {
 
 			// Create the buildings - context and geography projection
@@ -314,14 +322,8 @@ public class ContextManager implements ContextBuilder<Object> {
 		System.out.println();
 		System.out.println("ContextManager.number of pools: " +numberOfPools + " and numberOfFitness:"+numberOfFitness);
 
-		
-		try {
-			setMyParameters();
-		} catch (NumberFormatException e1) {
-			e1.printStackTrace();
-		} catch (ParameterNotFoundException e1) {
-			e1.printStackTrace();
-		}// here we set all parameters in GlobalVars
+//		setMyParameters();
+
 
 		for (IAgent a: agentContext.getObjects(IAgent.class)){
 			if(a.isAvailableTransport("car")){
@@ -338,9 +340,9 @@ public class ContextManager implements ContextBuilder<Object> {
 			}
 		}
 		System.out.println("ContextManager.number of car drivers: " +carDrivers + " and bus passengers:"+busPassengers);		
-
-
-
+		
+		System.out.println(" Model is running for service type: " +  GlobalVars.mySport + "\n"+ 
+							" Display clients movement or turn on teleportation(faster): " + GlobalVars.displayMovement);
 
 		try {
 			setchosenLocationIdClub(); //here we set new location that we want to check
@@ -378,7 +380,13 @@ public class ContextManager implements ContextBuilder<Object> {
 		GlobalVars.minRankBus= Double.parseDouble(ContextManager.getParameter("MINRANKBUS").toString());
 		GlobalVars.trafficImpact= Double.parseDouble(ContextManager.getParameter("TRAFFICIMPACT").toString());
 		GlobalVars.busStopDistanceImpact= Double.parseDouble(ContextManager.getParameter("BUSSTOPDISTANCEIMPACT").toString());
+		GlobalVars.selectedFacilityType= ContextManager.getParameter("SELECTED_FACILITY_TYPE");
+		GlobalVars.displayMovement= ContextManager.getParameter("DISPLAY_MOVEMENT");
 		myEndTime=Integer.parseInt(	ContextManager.getParameter("END_TIME").toString() );
+		
+		GlobalVars.setMySport(GlobalVars.selectedFacilityType.toString());
+		GlobalVars.setTeleportationOn(GlobalVars.displayMovement.toString());
+		
 	}
 
 	/** This function runs through each agent in the model and make some statistics about their favourite club: 1) distance traveled by ranges, 2)clubID x agents' ZONE_ID 

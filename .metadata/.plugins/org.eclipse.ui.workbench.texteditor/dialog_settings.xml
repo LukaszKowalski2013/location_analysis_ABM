@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="String" key="selection"/>
+		<item value="setMyParameters" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="true" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="string"/>
-			<item value="fitness"/>
-			<item value="agentsBusF"/>
-			<item value="getAgentsBusF"/>
-			<item value="teleport"/>
-			<item value="kej"/>
-			<item value="csv"/>
-			<item value="spearm"/>
-			<item value="chi2"/>
-			<item value="outputAgentsData"/>
-			<item value="int n"/>
-			<item value="array"/>
-			<item value="dataToWrite7"/>
-			<item value="current"/>
-			<item value="numberOfSadAgents"/>
+			<item value="setMyParameters"/>
+			<item value="setMySport"/>
+			<item value="numberOfFitness"/>
+			<item value="ContextManager.number of pools"/>
+			<item value="mySport"/>
+			<item value="selectedFacilityType"/>
+			<item value="setSelectedFacilityType"/>
+			<item value="Model is running for service type"/>
+			<item value="system.ou"/>
+			<item value="getparam"/>
+			<item value="MySport"/>
+			<item value="TELEPORTAT"/>
+			<item value="Display clients movement or turn on teleportation(faster):"/>
+			<item value="SYSTEM"/>
+			<item value="displayMovement"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
@@ -38,8 +38,8 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="422" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
-		<item value="372" key="DIALOG_HEIGHT"/>
-		<item value="357" key="DIALOG_Y_ORIGIN"/>
-		<item value="908" key="DIALOG_X_ORIGIN"/>
+		<item value="220" key="DIALOG_HEIGHT"/>
+		<item value="323" key="DIALOG_Y_ORIGIN"/>
+		<item value="642" key="DIALOG_X_ORIGIN"/>
 	</section>
 </section>

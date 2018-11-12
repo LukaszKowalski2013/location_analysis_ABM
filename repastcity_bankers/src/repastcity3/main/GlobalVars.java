@@ -174,13 +174,34 @@ public abstract class GlobalVars {
 
 	public static double placesPerRoomAtFitness=15; //15 = 100% supply
 	public static double placesPerLaneAtPool=8; //8 - 100% supply
-	public static String mySport="swimming"; //swimming or fitness
+
 
 	public static boolean loggerOn=false; // it works only for Route.java now and for most things at ContextManager 
 	// model_log.txt is 500 mb big after 2 FIT sims!!!
-	public static boolean teleportationOn=false; //we skip all routing here
+	
+	public static String selectedFacilityType; //TODO CHANGE WITH MYsPORT
+	public static String displayMovement;
+	
+	public static boolean teleportationOn; //we skip all routing here
+	public static String mySport = "swimming"; //swimming or fitness
+	
+	public static void setMySport(String selectedFacilityType) {
+		if (selectedFacilityType.contains("swimming")) {
+		GlobalVars.mySport = "swimming";}
+		else if (selectedFacilityType.contains("fitness")){
+			GlobalVars.mySport = "fitness";}
+	}
 
+	public static void setTeleportationOn(String displayMovement) {
+		if (displayMovement.contains("display_movement")) {
+		GlobalVars.teleportationOn = false;}
+		else if (displayMovement.contains("teleportation_on")){
+			GlobalVars.teleportationOn = true;}
+		}
+	
+	}
+	
 
-}
+//}
 
 

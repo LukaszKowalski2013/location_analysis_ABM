@@ -1,6 +1,130 @@
-lis 12, 2018 10:27:21 AM repastcity3.main.ContextManager testEnvironment
+lis 12, 2018 10:33:13 PM repastcity3.main.ContextManager testEnvironment
 FINE: Testing the environment
-lis 12, 2018 10:27:21 AM repastcity3.agent.AgentFactory createRandomAgents
+lis 12, 2018 10:33:13 PM repastcity3.agent.AgentFactory createRandomAgents
 INFO: Creating 4369 agents using random method.
-lis 12, 2018 10:27:22 AM repastcity3.main.ContextManager createSchedule
+lis 12, 2018 10:33:13 PM repastcity3.main.ContextManager createSchedule
 FINE: The single-threaded scheduler will be used.
+lis 12, 2018 10:33:29 PM repastcity3.main.ContextManager testEnvironment
+FINE: Testing the environment
+lis 12, 2018 10:33:30 PM repastcity3.agent.AgentFactory createRandomAgents
+INFO: Creating 7801 agents using random method.
+lis 12, 2018 10:33:30 PM repastcity3.main.ContextManager createSchedule
+FINE: The single-threaded scheduler will be used.
+lis 12, 2018 10:35:20 PM repastcity3.main.ContextManager outputAgentsData
+INFO:  chosenLocation, 42.0
+ numberOfRuns, 1
+ coolingVariableCar, 0.1
+ coolingVariableBus, 0.5
+ minRankCar, 0.00985
+ minRankBus, 0.00799
+ trafficImpact, 0.1
+ busStopDistanceImpact, 150.0
+Happyagents, 6893
+ sadOnes, 908
+END_TIME, 10000
+ car correlation, 0.6422643728556175
+ bus correlation, 0.994976750964047
+ChiSquareTest, 165.50621419128373
+carCorrSpearman, 0.8997002046464956
+busCorrSpearman, 1.0
+simChi2: [872, 2333, 276, 949, 2075, 388]
+lis 12, 2018 10:35:31 PM repastcity3.main.ContextManager testEnvironment
+FINE: Testing the environment
+lis 12, 2018 10:35:31 PM repastcity3.agent.AgentFactory createRandomAgents
+INFO: Creating 4369 agents using random method.
+lis 12, 2018 10:35:31 PM repastcity3.main.ContextManager createSchedule
+FINE: The single-threaded scheduler will be used.
+lis 12, 2018 10:35:41 PM repastcity3.main.ContextManager updateRealTime
+INFO: Simulating day 1
+lis 12, 2018 10:35:41 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 1441.0. Speed: 1.542058541498E9sec/ticks.
+lis 12, 2018 10:35:42 PM repastcity3.main.ContextManager updateRealTime
+INFO: Simulating day 2
+lis 12, 2018 10:35:42 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 2882.0. Speed: 1.35sec/ticks.
+lis 12, 2018 10:35:44 PM repastcity3.main.ContextManager updateRealTime
+INFO: Simulating day 3
+lis 12, 2018 10:35:44 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 4323.0. Speed: 1.671sec/ticks.
+lis 12, 2018 10:35:45 PM repastcity3.main.ContextManager updateRealTime
+INFO: Simulating day 4
+lis 12, 2018 10:35:45 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 5764.0. Speed: 1.327sec/ticks.
+lis 12, 2018 10:35:47 PM repastcity3.main.ContextManager updateRealTime
+INFO: Simulating day 5
+lis 12, 2018 10:35:47 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 7205.0. Speed: 1.408sec/ticks.
+lis 12, 2018 10:35:48 PM repastcity3.main.ContextManager updateRealTime
+INFO: Simulating day 6
+lis 12, 2018 10:35:48 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 8646.0. Speed: 1.272sec/ticks.
+lis 12, 2018 10:35:49 PM repastcity3.main.ContextManager end
+INFO: Simulation is ending after: 10000.0 iterations.
+lis 12, 2018 10:35:49 PM repastcity3.main.ContextManager outputAgentsData
+INFO:  chosenLocation, 42.0
+ numberOfRuns, 2
+ coolingVariableCar, 0.1
+ coolingVariableBus, 0.5
+ minRankCar, 0.00985
+ minRankBus, 0.00799
+ trafficImpact, 0.1
+ busStopDistanceImpact, 150.0
+Happyagents, 4116
+ sadOnes, 253
+END_TIME, 10000
+ car correlation, 0.7610412287809644
+ bus correlation, 0.8855540129570606
+ChiSquareTest, 19.66202083813472
+carCorrSpearman, 0.8610500699228079
+busCorrSpearman, 0.8614457831325301
+simChi2: [409, 1998, 1213, 118, 348, 30]
+lis 12, 2018 10:37:18 PM repastcity3.main.ContextManager testEnvironment
+FINE: Testing the environment
+lis 12, 2018 10:37:19 PM repastcity3.agent.AgentFactory createRandomAgents
+INFO: Creating 7801 agents using random method.
+lis 12, 2018 10:37:19 PM repastcity3.main.ContextManager createSchedule
+FINE: The single-threaded scheduler will be used.
+lis 12, 2018 10:37:27 PM repastcity3.main.ContextManager updateRealTime
+INFO: Simulating day 1
+lis 12, 2018 10:37:27 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 1441.0. Speed: 99.019sec/ticks.
+lis 12, 2018 10:37:33 PM repastcity3.main.ContextManager updateRealTime
+INFO: Simulating day 2
+lis 12, 2018 10:37:33 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 2882.0. Speed: 5.672sec/ticks.
+lis 12, 2018 10:37:36 PM repastcity3.main.ContextManager updateRealTime
+INFO: Simulating day 3
+lis 12, 2018 10:37:36 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 4323.0. Speed: 3.637sec/ticks.
+lis 12, 2018 10:37:41 PM repastcity3.main.ContextManager updateRealTime
+INFO: Simulating day 4
+lis 12, 2018 10:37:41 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 5764.0. Speed: 4.435sec/ticks.
+lis 12, 2018 10:37:45 PM repastcity3.main.ContextManager updateRealTime
+INFO: Simulating day 5
+lis 12, 2018 10:37:45 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 7205.0. Speed: 4.332sec/ticks.
+lis 12, 2018 10:37:49 PM repastcity3.main.ContextManager updateRealTime
+INFO: Simulating day 6
+lis 12, 2018 10:37:49 PM repastcity3.main.ContextManager printTicks
+INFO: Iterations: 8646.0. Speed: 4.152sec/ticks.
+lis 12, 2018 10:37:53 PM repastcity3.main.ContextManager end
+INFO: Simulation is ending after: 10000.0 iterations.
+lis 12, 2018 10:37:53 PM repastcity3.main.ContextManager outputAgentsData
+INFO:  chosenLocation, 42.0
+ numberOfRuns, 3
+ coolingVariableCar, 0.1
+ coolingVariableBus, 0.5
+ minRankCar, 0.00985
+ minRankBus, 0.00799
+ trafficImpact, 0.1
+ busStopDistanceImpact, 150.0
+Happyagents, 6472
+ sadOnes, 1329
+END_TIME, 10000
+ car correlation, 0.600695999113568
+ bus correlation, 0.9899364513362765
+ChiSquareTest, 123.40339495426957
+carCorrSpearman, 0.8328305948416885
+busCorrSpearman, 0.9642857142857143
+simChi2: [899, 2137, 343, 999, 1724, 370]

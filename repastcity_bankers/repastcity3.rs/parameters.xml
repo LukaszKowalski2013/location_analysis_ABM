@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <parameters>
-				<parameter name="selectedFacilityType" displayName=" Choose Facility Type to analyse" type="java.lang.String" 
+				<parameter name="SELECTED_FACILITY_TYPE" displayName=" Choose service type to analyse" type="java.lang.String" 
 						defaultValue="swimming" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									values="swimming fitness "
+									values="swimming fitness"
 		/>
 		
-						<parameter name="DisplayMovement" displayName=" Display clients movement or turn on teleportation(faster)" type="java.lang.String" 
+						<parameter name="DISPLAY_MOVEMENT" displayName=" Display clients movement or turn on teleportation(faster)" type="java.lang.String" 
 						defaultValue="display_movement" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
