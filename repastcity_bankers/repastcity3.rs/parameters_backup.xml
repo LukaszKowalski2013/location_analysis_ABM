@@ -4,14 +4,8 @@
 						defaultValue="swimming" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									values="swimming fitness "
-		/>
-		
-						<parameter name="DisplayMovement" displayName=" Display clients movement or turn on teleportation(faster)" type="java.lang.String" 
-						defaultValue="display_movement" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
-									values="display_movement teleportation_on "
+									values="swimming fitness"
+						
 		/>
 		
 					<parameter name="randomSeed" displayName="Default Random Seed" type="int" 
@@ -32,6 +26,7 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
+
 				<parameter name="COOLINGVARIABLEBUS" displayName="2 coolingVariableBus" type="double" 
 						defaultValue="0.5" 
 						isReadOnly="false" 
@@ -56,7 +51,6 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-
 				<parameter name="MINRANKBUS" displayName="4 minRankBus" type="double" 
 						defaultValue="0.00799" 
 						isReadOnly="false" 

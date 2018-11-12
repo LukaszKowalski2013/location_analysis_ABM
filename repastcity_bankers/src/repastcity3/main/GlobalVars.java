@@ -151,7 +151,7 @@ public abstract class GlobalVars {
 
 	//static parameters used by agents
 	public static double howLongAtClub = 1.0; //1 hour // it can be a parameter changed by user, but than I should change checkClubLater 
-//	public static double checkClubLater = 3.0; // interval at which he checks the club. WE CAN USE IT ANOTHER TIME, WHEN THESE MODELS WIL BE MORE COMPLICATED
+	
 	public static int numberOfPools = 27;  // +7 it has to be hard-coding because we MyMatrixes.java, distances added from file.
 	public static int numberOfFitness = 122; // +7  it has to be hard-coding because we MyMatrixes.java, distances added from file.
 	
@@ -161,7 +161,6 @@ public abstract class GlobalVars {
 	public static double maxScarKM=22;
 	public static double maxSbusKM=16;
 	
-//	public static double warmingVariable=0.1;
 	public static double minRankCar; // Fit auto=0.00985  swim auto=0.0353  //if agent's best club has 3-ranking in sRanking below this value, agent stays home //Math.random() * 0.3; 
 	public static double minRankBus; //  fit MPK=0.00799  swim MPK=0.01208
 	
@@ -181,11 +180,6 @@ public abstract class GlobalVars {
 	// model_log.txt is 500 mb big after 2 FIT sims!!!
 	public static boolean teleportationOn=false; //we skip all routing here
 
-//	SET CHOSEN LOCATION BY ITS ID AND NAME OF CATALOG (ContextManager>chosenLocationIdClub). if this number is <3000 (e.g. 42) we don't check any new location.
-//	Otherwise we check  certain club with idClub indicated by this number.
-
-	//demand parameters for xml file or menu in Repast:
-	// random:42 lub point:people.shp$repastcity3.agent.DefaultAgent
 
 }
 
