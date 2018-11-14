@@ -161,7 +161,6 @@ public class ContextManager implements ContextBuilder<Object> {
 		RepastCityLogging.init();
 
 
-		
 		// Keep a useful static link to the main context
 		mainContext = con;
 
