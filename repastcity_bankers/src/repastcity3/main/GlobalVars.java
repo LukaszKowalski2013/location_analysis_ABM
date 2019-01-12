@@ -1,7 +1,10 @@
-/*
-©Copyright 2012 Nick Malleson
-This file is part of RepastCity.
+/*©Copyright 2019 Lukasz Kowalski
+This file is part of Location Analysis ABM, which was built based on RepastCity software.
+More information about the model can be found here:
+https://github.com/LukaszKowalski2013/location_analysis_ABM
+Polish readers can read my PhD thesis about it, that is available on my Research Gate profile: https://goo.gl/TViW89
 
+©Copyright 2012 Nick Malleson
 RepastCity is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -13,8 +16,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with RepastCity.  If not, see <http://www.gnu.org/licenses/>.
-*/
+along with RepastCity.  If not, see <http://www.gnu.org/licenses/>.*/
 
 package repastcity3.main;
 
@@ -32,7 +34,7 @@ import repast.simphony.parameter.Parameters;
 
 /**
  * 
- * @author nick
+ * @author nick & Lukasz Kowalski
  *
  */
 public abstract class GlobalVars {
@@ -132,11 +134,14 @@ public abstract class GlobalVars {
 		public static final double MAJOR_ROAD_ADVANTAGE = 3; //this is also a multiplier (at networkedge getSpeed() there is equation: Kej+ I commented it out at: NetworkEdge.getSpeed()
 
 		// The speed associated with different types of road (a multiplier, i.e. x times faster than walking)
+		// it is parameter, that controls the speed for car drivers and public transport passengers 
+		// - it should be rather used for visualization purposes and some primary checks.
+		// In my opinion (LK) all distances should be eventually pre-calculated, so that the model is really fast.
 		public static double getSpeed(String type) {
 			if (type.equals(WALK)) 
-				return 1; //kej+ it was 1 //Kej+ presumption, people travel 4,9 km/h or 81m/min wg GoogleMaps(my data are unreliable here, because of spatial units I used (walking distanes are very short)
+				return 1; //kej+ it was 1 //Kej+ presumption, people travel 4,9 km/h or 81m/min according to GoogleMaps(my data are unreliable here, because of spatial units I used (walking distanes are very short)
 			else if (type.equals(BUS))
-				return 4.46; //it was 2 //Kej+  myData: passangers travel 22,3 km/h (st.dev=12,2) or 371 m/min (==m/tick) => multiplier=4.46 (watch out! this speed was based on google distance in km and jakdojade distance in min - but buses didn't had to go along fastest road option - however I think they usually did)
+				return 4.46; //it was 2 //Kej+  myData: passangers travel 22,3 km/h (st.dev=12,2) or 371 m/min (==m/tick) => multiplier=4.46 (watch out! this speed was based on google distance in km and jakdojade.pl site distance in min - but buses didn't had to go along fastest road option - however I think they usually did)
 //			else if (type.equals(TRAIN))
 //				return 1000;
 			else if (type.equals(CAR))
@@ -177,7 +182,7 @@ public abstract class GlobalVars {
 
 
 	public static boolean loggerOn=false; // it works only for Route.java now and for most things at ContextManager 
-	// model_log.txt is 500 mb big after 2 FIT sims!!!
+	// model_log.txt is 500 mb big after 2 fitness simulations!!!
 	
 	public static String selectedFacilityType; //TODO CHANGE WITH MYsPORT
 	public static String displayMovement;

@@ -1,6 +1,6 @@
-lis 13, 2018 1:13:15 AM repastcity3.main.ContextManager testEnvironment
+sty 12, 2019 9:53:23 PM repastcity3.main.ContextManager testEnvironment
 FINE: Testing the environment
-lis 13, 2018 1:13:16 AM repastcity3.agent.AgentFactory createRandomAgents
+sty 12, 2019 9:53:23 PM repastcity3.agent.AgentFactory createRandomAgents
 INFO: Creating 4369 agents using random method.
-lis 13, 2018 1:13:16 AM repastcity3.main.ContextManager createSchedule
+sty 12, 2019 9:53:23 PM repastcity3.main.ContextManager createSchedule
 FINE: The single-threaded scheduler will be used.

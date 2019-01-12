@@ -9,9 +9,9 @@
 Happyagents, 4168
  sadOnes, 201
 END_TIME, 10000
- car correlation, 0.8565284861224173
- bus correlation, 0.8661409969372386
-ChiSquareTest, 44.15060879462365
-carCorrSpearman, 0.9293873770595386
-busCorrSpearman, 0.934148484292342
-simChi2: [403, 2302, 925, 129, 385, 24]
+ car correlation, 0.8177183453767747
+ bus correlation, 0.8621139889407067
+ChiSquareTest, 29.930071741006365
+carCorrSpearman, 0.9202757361079746
+busCorrSpearman, 0.8622909085775464
+simChi2: [414, 2216, 999, 144, 366, 29]

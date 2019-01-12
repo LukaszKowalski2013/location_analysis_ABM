@@ -1,6 +1,10 @@
-/*©Copyright 2012 Nick Malleson
-This file is part of RepastCity.
+/*©Copyright 2019 Lukasz Kowalski
+This file is part of Location Analysis ABM, which was built based on RepastCity software.
+More information about the model can be found here:
+https://github.com/LukaszKowalski2013/location_analysis_ABM
+Polish readers can read my PhD thesis about it, that is available on my Research Gate profile: https://goo.gl/TViW89
 
+©Copyright 2012 Nick Malleson
 RepastCity is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
