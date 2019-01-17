@@ -110,7 +110,7 @@ public interface IAgent {
 	double getMinRank();
 	void setMinRank(double AgentsMinRank);
 
-	void setCoolingVariable(double coolingVariableBus);
+	void setCoolingVariable(double experiencePT);
 	
 	String getFavClubStrefa_moj();
 //	practicedToday

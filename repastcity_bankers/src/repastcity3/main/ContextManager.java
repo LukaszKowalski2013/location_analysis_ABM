@@ -330,13 +330,13 @@ public class ContextManager implements ContextBuilder<Object> {
 			if(a.isAvailableTransport("car")){
 				carDrivers++;
 				a.setMinRank(GlobalVars.minRankCar);
-				a.setCoolingVariable(GlobalVars.coolingVariableCar);
+				a.setCoolingVariable(GlobalVars.experienceCar);
 				//				System.out.print(GlobalVars.minRankCar);
 			}
 			else if(a.isAvailableTransport("bus")){
 				busPassengers++;
 				a.setMinRank(GlobalVars.minRankBus);
-				a.setCoolingVariable(GlobalVars.coolingVariableBus);
+				a.setCoolingVariable(GlobalVars.experiencePT);
 				//				System.out.print(GlobalVars.minRankBus);
 			}
 		}
@@ -375,8 +375,8 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * @throws ParameterNotFoundException 
 	 * @throws NumberFormatException */
 	void setMyParameters() throws NumberFormatException, ParameterNotFoundException{
-		GlobalVars.coolingVariableCar= Double.parseDouble(ContextManager.getParameter("COOLINGVARIABLECAR").toString());
-		GlobalVars.coolingVariableBus= Double.parseDouble(ContextManager.getParameter("COOLINGVARIABLEBUS").toString());		
+		GlobalVars.experienceCar= Double.parseDouble(ContextManager.getParameter("experienceCar").toString());
+		GlobalVars.experiencePT= Double.parseDouble(ContextManager.getParameter("experiencePT").toString());		
 		GlobalVars.minRankCar= Double.parseDouble(ContextManager.getParameter("MINRANKCAR").toString());
 		GlobalVars.minRankBus= Double.parseDouble(ContextManager.getParameter("MINRANKBUS").toString());
 		GlobalVars.trafficImpact= Double.parseDouble(ContextManager.getParameter("TRAFFICIMPACT").toString());
@@ -408,8 +408,8 @@ public class ContextManager implements ContextBuilder<Object> {
 
 		currentParameters =   " chosenLocation, " + chosenLocationIdClub + "\n"
 				+ " numberOfRuns, " + numberOfRuns  + "\n"
-				+ " coolingVariableCar, " + GlobalVars.coolingVariableCar  + "\n"
-				+ " coolingVariableBus, " + GlobalVars.coolingVariableBus             + "\n"
+				+ " experienceCar, " + GlobalVars.experienceCar  + "\n"
+				+ " experiencePT, " + GlobalVars.experiencePT             + "\n"
 				+ " minRankCar, "+GlobalVars.minRankCar +"\n"+ " minRankBus, "+GlobalVars.minRankBus + "\n"
 				+ " trafficImpact, " + GlobalVars.trafficImpact + "\n"
 				+ " busStopDistanceImpact, " + GlobalVars.busStopDistanceImpact + "\n";

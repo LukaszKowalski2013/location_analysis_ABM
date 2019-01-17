@@ -170,8 +170,8 @@ public abstract class GlobalVars {
 	public static double minRankBus; //  fit MPK=0.00799  swim MPK=0.01208
 	
 	// my parameters to control the model results
-	public static double coolingVariableCar; // 0.3 / variable is used to decrease Ranking of a club if agent can't enter there // Math.random()*0.3 +0.01 ;//
-	public static double coolingVariableBus;
+	public static double experienceCar; // 0.3 / variable is used to decrease Ranking of a club if agent can't enter there // Math.random()*0.3 +0.01 ;//
+	public static double experiencePT;
 
 	//FOR BUS RIDERS &FOR CAR DRIVERS: if we divided it by x= 100, for every 10 minutes of a = access time we loose 10% (0.1) of probability in Ranking (if x=50, a=10min, we get 0.2)
 	public static double trafficImpact; //=10; //we assume if club is located in parking zone, driver have to spend 15 minutes more to get to club //Math.random()*200; //
@@ -204,9 +204,21 @@ public abstract class GlobalVars {
 			GlobalVars.teleportationOn = true;}
 		}
 	
+	public static double[][] hours= 
+		   	//hours /Swimming /Fitness
+//			the numbers in 2nd and 3rd column stand for popularity of certain hours
+//			according to authors survey in Krakow (more information can be found in JASSS article)
+					{{6,5.76,1.93},
+					{7,4.68,4.82},
+					{8,4.32,5.21},
+					{9,3.42,2.89},
+					{10,0.0,2.6},
+					{16,3.6,5.98},
+					{17,7.74,8.01},
+					{18,14.22,17.66},
+					{19,14.04,18.82},
+					{20,17.28,17.27},
+					{21,5.94,5.5}};
 	}
 	
-
-//}
-
 

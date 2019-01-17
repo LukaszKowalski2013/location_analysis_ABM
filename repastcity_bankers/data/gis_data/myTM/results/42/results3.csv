@@ -1,7 +1,7 @@
  chosenLocation, 42.0
  numberOfRuns, 3
- coolingVariableCar, 0.1
- coolingVariableBus, 0.5
+ experienceCar, 0.1
+ experiencePT, 0.5
  minRankCar, 0.00985
  minRankBus, 0.00799
  trafficImpact, 0.1

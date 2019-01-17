@@ -20,7 +20,7 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="COOLINGVARIABLECAR" displayName="1 coolingVariableCar" type="double" 
+				<parameter name="experienceCar" displayName="1 experienceCar" type="double" 
 						defaultValue="0.1" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
@@ -32,7 +32,7 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="COOLINGVARIABLEBUS" displayName="2 coolingVariableBus" type="double" 
+				<parameter name="experiencePT" displayName="2 experiencePT" type="double" 
 						defaultValue="0.5" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"

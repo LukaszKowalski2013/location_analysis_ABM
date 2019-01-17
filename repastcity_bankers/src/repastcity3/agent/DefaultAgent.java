@@ -98,19 +98,19 @@ public class DefaultAgent implements IAgent {
 	
 	//my variables for hours calculations -this is for an option when we draw times every simulation for every agent
 	private double myFavouriteHour;
-	double[][] hours= 
+	double[][] hours= GlobalVars.hours;
    	//hours /Swimming /Fitness
-			{{6,5.76,1.93},
-			{7,4.68,4.82},
-			{8,4.32,5.21},
-			{9,3.42,2.89},
-			{10,0.0,2.6},
-			{16,3.6,5.98},
-			{17,7.74,8.01},
-			{18,14.22,17.66},
-			{19,14.04,18.82},
-			{20,17.28,17.27},
-			{21,5.94,5.5}};
+//			{{6,5.76,1.93},
+//			{7,4.68,4.82},
+//			{8,4.32,5.21},
+//			{9,3.42,2.89},
+//			{10,0.0,2.6},
+//			{16,3.6,5.98},
+//			{17,7.74,8.01},
+//			{18,14.22,17.66},
+//			{19,14.04,18.82},
+//			{20,17.28,17.27},
+//			{21,5.94,5.5}};
 
 	public DefaultAgent() { //bankers change. CONSTRUCTOR.
 		this.id = uniqueID++;
@@ -128,7 +128,7 @@ public class DefaultAgent implements IAgent {
 		// Find a building that agents can use (home or clubs for now). First, iterate over all buildings in the model (there should be less than 10 000)
 		// populate 2 arrays of clubs.
 		int i=0;
-		int j=0; //temp for fitness
+		int j=0; 
 		for (Building b:ContextManager.buildingContext) {
 			if (GlobalVars.mySport=="swimming"){
 				//make a list of all clubs & populate idClub column in sRanking, depending on what sport do we check
@@ -175,18 +175,6 @@ public class DefaultAgent implements IAgent {
 //			System.out.println("my times are equal, but I'll change them"); //checked - its fine
 		}
 		
-//		System.out.println("juhu!");
-//		if(isAvailableTransport("car")){
-//			minRank=GlobalVars.minRankCar; //if agent's best club has 3-ranking in sRanking below this value, agent stays home 
-//			System.out.println("hurra!");
-//		}
-//		else if(isAvailableTransport("bus")){
-//			minRank=GlobalVars.minRankBus; 
-//			System.out.println("hurra!");
-//		}
-		
-//		checkMyRanking();
-				
 	} //end of constructor
 
 	// Kej+ STEP - AGENT CONTROL
