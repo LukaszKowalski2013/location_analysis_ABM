@@ -84,11 +84,11 @@ public class DefaultAgent implements IAgent {
 	// Used whenever Geometry objects need to be created - its needed for teleportation
 	private final GeometryFactory geomFac = new GeometryFactory();
 	
-	//KEJ+ MY VARIABLES hold in myRanking
+	//Lukasz Kowalski comment: MY VARIABLES hold in myRanking
 	//	sRanking indexes: 0- myId 1-idClub 2-myHour 3-ranking 4-HCkm 5-HCmin 6-howCrowded (in persons per place) 7-accessTime 8-initialRanking (based on distance equation)
 	// null for sport split
 	private double[][] sRanking =null;// TEMP new double[GlobalVars.numberOfPools*myTimeList.length][9];
-	private Building[] allClubs =null; // TEMP new Building[GlobalVars.numberOfPools]; //KEJ+ an array of all clubs
+	private Building[] allClubs =null; // TEMP new Building[GlobalVars.numberOfPools]; //Lukasz Kowalski comment: an array of all clubs
 
 	private double ZONE_ID;//taken from Shapefile
 
@@ -118,7 +118,7 @@ public class DefaultAgent implements IAgent {
 		//sport split
 		if (GlobalVars.mySport=="swimming"){
 			sRanking =new double[GlobalVars.numberOfPools*myTimeList.length][9];
-			allClubs =new Building[GlobalVars.numberOfPools]; //KEJ+ an array of all clubs
+			allClubs =new Building[GlobalVars.numberOfPools]; //Lukasz Kowalski comment: an array of all clubs
 		}
 		else if(GlobalVars.mySport=="fitness"){
 			sRanking =new double[GlobalVars.numberOfFitness*myTimeList.length][9]; //temp for fitness
@@ -177,7 +177,7 @@ public class DefaultAgent implements IAgent {
 		
 	} //end of constructor
 
-	// Kej+ STEP - AGENT CONTROL
+	// Lukasz Kowalski comment: STEP - AGENT CONTROL
 
 	@Override
 	public void step() throws Exception {
@@ -186,7 +186,7 @@ public class DefaultAgent implements IAgent {
 		// 1.  See what the time is, this will determine what the agent should be doing. The BigDecimal stuff
 		// is just to round the time to 5 decimal places, otherwise it will never be exactly 9.0 or 17.0.
 //		double theTime = BigDecimal.valueOf(ContextManager.realTime).round(new MathContext(2,RoundingMode.HALF_UP)).doubleValue();
-		 //performance optimisation point - can we move it to ContextManager? agent's actions are not controlled by time here //Kej+ I changed from 5 to 2
+		 //performance optimisation point - can we move it to ContextManager? agent's actions are not controlled by time here //Lukasz Kowalski comment: I changed from 5 to 2
 		
 		if (fireOnce==1){
 			myRankingUpdate(transport.contains("car")); //it should stay as it is - if there is no car- agent should travel by bus
@@ -207,10 +207,10 @@ public class DefaultAgent implements IAgent {
 		if (whereAmI==0 && practicedToday==0 && heCanGo){
 			if (sRanking[(int)myFavouriteClub][3] > minRank){
 
-				if (ContextManager.realTime > sRanking[(int)myFavouriteClub][2]) { // I assume at 4pm he goes to club or home //Kej+potential optimisation point
+				if (ContextManager.realTime > sRanking[(int)myFavouriteClub][2]) { // I assume at 4pm he goes to club or home //Lukasz Kowalski comment:potential optimisation point
 				
 											
-					//TODO teleportation here
+					
 					if(GlobalVars.teleportationOn==false){
 						whereAmI=3; // he is on his WAY now; 3 = agent is changing his location to route
 						this.route = new Route(this, this.allClubs[whatsClubIndexInAllClubs(myFavouriteClub)].getCoords(),
@@ -257,7 +257,7 @@ public class DefaultAgent implements IAgent {
 			if (practicedToday==2){ //no. he has just waited and didn't practiced
 			
 				// note down accessTime & crowd (later on - other things)
-				sRanking[(int)myFavouriteClub][7]= 1; //TEMP 1 should be changed to real accessTime TODO
+				sRanking[(int)myFavouriteClub][7]= 1; 
 				sRanking[(int)myFavouriteClub][6]=allClubs[whatsClubIndexInAllClubs(myFavouriteClub)].howCrowdedWasIt(); //crowd// right now I use it just for information
 				// agent didn't get in, so we decrease value of his favouriteClub by cooling variable value 
 				sRanking[(int)myFavouriteClub][3]-=coolingVariable;
@@ -266,7 +266,7 @@ public class DefaultAgent implements IAgent {
 				}
 				
 
-				//TODO teleportation here
+				
 				if(GlobalVars.teleportationOn==false){
 					this.route = new Route(this, this.home.getCoords(), this.home);
 					whereAmI=3; //travelling (or waiting for teleport)
@@ -290,7 +290,7 @@ public class DefaultAgent implements IAgent {
 			
 		} //end of finished at club
 
-		if(GlobalVars.teleportationOn==false){ // TODO here we have the hardest part
+		if(GlobalVars.teleportationOn==false){ 
 			if (this.route == null) {
 			} // Don't do anything if a route hasn't been created.
 
@@ -323,12 +323,11 @@ public class DefaultAgent implements IAgent {
 					allClubs[myClubIndexInAllClubs].addAgent(this);
 					allClubs[myClubIndexInAllClubs].clientEntry(); //add up client entry
 					myTimeAtClub=ContextManager.realTime;
-					double accessTime=0; //TEMP it should be taken from club
+					double accessTime=0;
 					//note down accessTime and HCmin in sRanking
-					sRanking[(int)myFavouriteClub][7]= accessTime; //TEMP 1 should be changed accessTime
-					sRanking[(int)myFavouriteClub][5]=Math.round((myTimeAtClub-myTimeOfDeparture)*60); // temp, watch out, performace optimisation point
+					sRanking[(int)myFavouriteClub][7]= accessTime; 
+					sRanking[(int)myFavouriteClub][5]=Math.round((myTimeAtClub-myTimeOfDeparture)*60);
 
-					//					System.out.print("\n"+"HOP ");
 					//					System.out.print("agent " + this.id + " got here in (h): ");
 					//					System.out.printf("%.2f", (ContextManager.realTime-myTimeOfDeparture));
 					//					
@@ -346,7 +345,7 @@ public class DefaultAgent implements IAgent {
 		} // end of atDestination triggered by whereAmI == 4 // before it was end of if ...atDestination
 		
 //		if (whereAmI==3 && GlobalVars.teleportationOn){ // here we have our option for teleporting
-//			//TODO 
+//			
 //		}
 
 
@@ -358,7 +357,7 @@ public class DefaultAgent implements IAgent {
 	 * There will be no inter-agent communication so these agents can be
 	 * executed simulataneously in separate threads.
 	 */
-	@Override //KEJ+ I changed it
+	@Override //Lukasz Kowalski comment: I changed it
 	public final boolean isThreadable() {
 		return false;
 	}
@@ -456,7 +455,7 @@ public class DefaultAgent implements IAgent {
 		return this.allClubs[whatsClubIndexInAllClubs(myFavouriteClub)].getStrefa_moj();
 	}
 	
-	//Kej+how to get to club with id X  //WARNING, THIS OPTION IS ONLY FOR TWO myHour
+	//Lukasz Kowalski comment:how to get to club with id X  //WARNING, THIS OPTION IS ONLY FOR TWO myHour
 	public int whatsClubIndexInAllClubs(double myId){
 		int searchedIndex=-1;
 		for (int s=0; s< sRanking.length; s++) { 
@@ -623,7 +622,7 @@ public class DefaultAgent implements IAgent {
 			myColInMatrix=setMyColInMatrix(myHCMatrix, s);
 			i= myColInMatrix;
 			
-//			System.out.println(myrankMatrix[0][i] + " & "+ sRanking[s][1]); //KEJ check right col search // it is OK for swimming pools
+//			System.out.println(myrankMatrix[0][i] + " & "+ sRanking[s][1]); //Lukasz Kowalski comment check right col search // it is OK for swimming pools
 			
 			//8 - initialRanking (number of points based on distance
 			sRanking[s][8] = myrankMatrix[myRowInMatrix][i];
@@ -651,13 +650,13 @@ public class DefaultAgent implements IAgent {
 			
 			// 7 - accessTime
 			if (doesHeHasACar) {// CAR DRIVERS     	//if agent doesn't have a car, he travels by bus.
-				sRanking[s][7]= (this.allClubs[whatsClubIndexInAllClubs(s)].GetAccessCar()* GlobalVars.trafficImpact)*traffic; //GetAccessCar() - for city centre's clubs is set to 1 in ArcGIS, so by now traffic variable is a duplicate - TODO - get rid off this duplicate
+				sRanking[s][7]= (this.allClubs[whatsClubIndexInAllClubs(s)].GetAccessCar()* GlobalVars.trafficImpact)*traffic; //GetAccessCar() - for city centre's clubs is set to 1 in ArcGIS, so by now traffic variable is a duplicate-
 			}
 			else if(!doesHeHasACar){ //BUS RIDERS
 				sRanking[s][7]= (this.allClubs[whatsClubIndexInAllClubs(s)].GetAccessBus() +home.GetAccessBus())/GlobalVars.busStopDistanceImpact;
 			}
 			// 2 - myHour step 2/2
-			if(GlobalVars.teleportationOn==false){ //TODO -just marked. If teleportation is on - agent just teleports to the club at myHour
+			if(GlobalVars.teleportationOn==false){ //T If teleportation is on - agent just teleports to the club at myHour
 				sRanking[s][2]= (double) Math.round( (sRanking[s][2] - sRanking[s][5]/60) * 100) / 100 ;
 				// We subtract time needed to get to club from myHour (time when agent has to be in club)
 				//strange thing here is that still agents time calculated this way is longer then time calculated by departureTime and arrivalTime
@@ -741,9 +740,8 @@ public class DefaultAgent implements IAgent {
 			}
 		}
 	}
-	
-	//TODO
-	//KEJ+ new way of transportation invented in Poland by Kej
+		
+	//Lukasz Kowalski comment: new way of transportation invented in Poland by Lukasz Kowalski
 	private void teleportMe(IAgent agent, Coordinate destination, Building destinationBuilding) {
 			ContextManager.moveAgent(this, geomFac.createPoint(destination));
 	}

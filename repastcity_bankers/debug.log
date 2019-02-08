@@ -1,527 +1,136 @@
-ERROR [AWT-EventQueue-0] 2018-11-11 22:28:31,335 repast.simphony.visualization.gui.GISStylePanel - Error creating style
-java.lang.NullPointerException
-	at repast.simphony.gis.styleEditor.ByValuePanel.initTable(ByValuePanel.java:337)
-	at repast.simphony.gis.styleEditor.ByValuePanel.init(ByValuePanel.java:333)
-	at repast.simphony.gis.styleEditor.StyleEditorPanel.setData(StyleEditorPanel.java:61)
-	at repast.simphony.gis.styleEditor.StyleDialog.setData(StyleDialog.java:50)
-	at repast.simphony.visualization.gui.GISStylePanel.showStyleDialog(GISStylePanel.java:444)
-	at repast.simphony.visualization.gui.GISStylePanel.access$9(GISStylePanel.java:416)
-	at repast.simphony.visualization.gui.GISStylePanel$2.actionPerformed(GISStylePanel.java:220)
-	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
-	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
-	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
-	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
-	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
-	at java.awt.AWTEventMulticaster.mouseReleased(AWTEventMulticaster.java:289)
-	at java.awt.Component.processMouseEvent(Component.java:6539)
-	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
-	at java.awt.Component.processEvent(Component.java:6304)
-	at java.awt.Container.processEvent(Container.java:2239)
-	at java.awt.Component.dispatchEventImpl(Component.java:4889)
-	at java.awt.Container.dispatchEventImpl(Container.java:2297)
-	at java.awt.Component.dispatchEvent(Component.java:4711)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4904)
-	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4535)
-	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4476)
-	at java.awt.Container.dispatchEventImpl(Container.java:2283)
-	at java.awt.Window.dispatchEventImpl(Window.java:2746)
-	at java.awt.Component.dispatchEvent(Component.java:4711)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:760)
-	at java.awt.EventQueue.access$500(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:709)
-	at java.awt.EventQueue$3.run(EventQueue.java:703)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:84)
-	at java.awt.EventQueue$4.run(EventQueue.java:733)
-	at java.awt.EventQueue$4.run(EventQueue.java:731)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:730)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:109)
-	at java.awt.WaitDispatchSupport$2.run(WaitDispatchSupport.java:190)
-	at java.awt.WaitDispatchSupport$4.run(WaitDispatchSupport.java:235)
-	at java.awt.WaitDispatchSupport$4.run(WaitDispatchSupport.java:233)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.awt.WaitDispatchSupport.enter(WaitDispatchSupport.java:233)
-	at java.awt.Dialog.show(Dialog.java:1084)
-	at java.awt.Component.show(Component.java:1671)
-	at java.awt.Component.setVisible(Component.java:1623)
-	at java.awt.Window.setVisible(Window.java:1014)
-	at java.awt.Dialog.setVisible(Dialog.java:1005)
-	at repast.simphony.ui.plugin.editor.OptionsDialog.showDialog(OptionsDialog.java:252)
-	at repast.simphony.ui.plugin.editor.OptionsEditorDialog.display(OptionsEditorDialog.java:59)
-	at repast.simphony.ui.tree.ScenarioTree.showDialog(ScenarioTree.java:251)
-	at repast.simphony.ui.tree.ScenarioTree.access$1(ScenarioTree.java:242)
-	at repast.simphony.ui.tree.ScenarioTree$1.mouseClicked(ScenarioTree.java:51)
-	at java.awt.AWTEventMulticaster.mouseClicked(AWTEventMulticaster.java:270)
-	at java.awt.Component.processMouseEvent(Component.java:6542)
-	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
-	at java.awt.Component.processEvent(Component.java:6304)
-	at java.awt.Container.processEvent(Container.java:2239)
-	at java.awt.Component.dispatchEventImpl(Component.java:4889)
-	at java.awt.Container.dispatchEventImpl(Container.java:2297)
-	at java.awt.Component.dispatchEvent(Component.java:4711)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4904)
-	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4544)
-	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4476)
-	at java.awt.Container.dispatchEventImpl(Container.java:2283)
-	at java.awt.Window.dispatchEventImpl(Window.java:2746)
-	at java.awt.Component.dispatchEvent(Component.java:4711)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:760)
-	at java.awt.EventQueue.access$500(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:709)
-	at java.awt.EventQueue$3.run(EventQueue.java:703)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:84)
-	at java.awt.EventQueue$4.run(EventQueue.java:733)
-	at java.awt.EventQueue$4.run(EventQueue.java:731)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:730)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-ERROR [AWT-EventQueue-0] 2018-11-12 10:25:30,828 repast.simphony.ui.RSApplication - Scenario Load Error
-repast.simphony.scenario.ScenarioLoadException: Unable to convert parameter type. Please use a convertor.
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:220)
-	at repast.simphony.ui.RSApplication.open(RSApplication.java:359)
-	at repast.simphony.ui.RSAppConfigurator.postWindowOpen(RSAppConfigurator.java:39)
-	at saf.core.ui.GUICreatorDelegate.runDisplay(GUICreatorDelegate.java:188)
-	at saf.core.ui.GUICreator$1.run(GUICreator.java:18)
-	at simphony.util.ThreadUtilities$Runner.run(ThreadUtilities.java:33)
-	at simphony.util.ThreadUtilities.runInEventThread(ThreadUtilities.java:47)
-	at saf.core.ui.GUICreator.runDisplay(GUICreator.java:16)
-	at repast.simphony.ui.RSUIPlugin$1.run(RSUIPlugin.java:104)
-	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
-	at java.awt.EventQueue.access$500(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:709)
-	at java.awt.EventQueue$3.run(EventQueue.java:703)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-Caused by: org.xml.sax.SAXException: Unable to convert parameter type. Please use a convertor.
-repast.simphony.parameter.ParameterFormatException: Parameter element is missing required attributes
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:128)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:509)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractXMLDocumentParser.emptyElement(AbstractXMLDocumentParser.java:182)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(XMLDocumentFragmentScannerImpl.java:1339)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2784)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:327)
-	at javax.xml.parsers.SAXParser.parse(SAXParser.java:328)
-	at repast.simphony.parameter.ParametersParser.<init>(ParametersParser.java:46)
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:168)
-	... 22 more
-Caused by: repast.simphony.parameter.ParameterFormatException: Parameter element is missing required attributes
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:75)
-	... 37 more
-ERROR [AWT-EventQueue-0] 2018-11-12 10:30:33,463 repast.simphony.ui.RSApplication - Scenario Load Error
-repast.simphony.scenario.ScenarioLoadException: Unable to convert parameter type. Please use a convertor.
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:220)
-	at repast.simphony.ui.RSApplication.open(RSApplication.java:359)
-	at repast.simphony.ui.RSAppConfigurator.postWindowOpen(RSAppConfigurator.java:39)
-	at saf.core.ui.GUICreatorDelegate.runDisplay(GUICreatorDelegate.java:188)
-	at saf.core.ui.GUICreator$1.run(GUICreator.java:18)
-	at simphony.util.ThreadUtilities$Runner.run(ThreadUtilities.java:33)
-	at simphony.util.ThreadUtilities.runInEventThread(ThreadUtilities.java:47)
-	at saf.core.ui.GUICreator.runDisplay(GUICreator.java:16)
-	at repast.simphony.ui.RSUIPlugin$1.run(RSUIPlugin.java:104)
-	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
-	at java.awt.EventQueue.access$500(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:709)
-	at java.awt.EventQueue$3.run(EventQueue.java:703)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-Caused by: org.xml.sax.SAXException: Unable to convert parameter type. Please use a convertor.
-repast.simphony.parameter.ParameterFormatException: Parameter element is missing required attributes
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:128)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:509)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractXMLDocumentParser.emptyElement(AbstractXMLDocumentParser.java:182)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(XMLDocumentFragmentScannerImpl.java:1339)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2784)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:327)
-	at javax.xml.parsers.SAXParser.parse(SAXParser.java:328)
-	at repast.simphony.parameter.ParametersParser.<init>(ParametersParser.java:46)
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:168)
-	... 22 more
-Caused by: repast.simphony.parameter.ParameterFormatException: Parameter element is missing required attributes
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:75)
-	... 37 more
-ERROR [AWT-EventQueue-0] 2018-11-12 10:34:22,411 repast.simphony.ui.RSApplication - Scenario Load Error
-repast.simphony.scenario.ScenarioLoadException: Unable to convert parameter type. Please use a convertor.
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:220)
-	at repast.simphony.ui.RSApplication.open(RSApplication.java:359)
-	at repast.simphony.ui.RSAppConfigurator.postWindowOpen(RSAppConfigurator.java:39)
-	at saf.core.ui.GUICreatorDelegate.runDisplay(GUICreatorDelegate.java:188)
-	at saf.core.ui.GUICreator$1.run(GUICreator.java:18)
-	at simphony.util.ThreadUtilities$Runner.run(ThreadUtilities.java:33)
-	at simphony.util.ThreadUtilities.runInEventThread(ThreadUtilities.java:47)
-	at saf.core.ui.GUICreator.runDisplay(GUICreator.java:16)
-	at repast.simphony.ui.RSUIPlugin$1.run(RSUIPlugin.java:104)
-	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
-	at java.awt.EventQueue.access$500(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:709)
-	at java.awt.EventQueue$3.run(EventQueue.java:703)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-Caused by: org.xml.sax.SAXException: Unable to convert parameter type. Please use a convertor.
-repast.simphony.parameter.ParameterFormatException: Parameter element is missing required attributes
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:128)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:509)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractXMLDocumentParser.emptyElement(AbstractXMLDocumentParser.java:182)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(XMLDocumentFragmentScannerImpl.java:1339)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2784)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:327)
-	at javax.xml.parsers.SAXParser.parse(SAXParser.java:328)
-	at repast.simphony.parameter.ParametersParser.<init>(ParametersParser.java:46)
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:168)
-	... 22 more
-Caused by: repast.simphony.parameter.ParameterFormatException: Parameter element is missing required attributes
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:75)
-	... 37 more
-ERROR [AWT-EventQueue-0] 2018-11-12 11:07:26,155 repast.simphony.ui.RSApplication - Scenario Load Error
-repast.simphony.scenario.ScenarioLoadException: Unable to creates parameters
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:220)
-	at repast.simphony.ui.RSApplication.open(RSApplication.java:359)
-	at repast.simphony.ui.RSAppConfigurator.postWindowOpen(RSAppConfigurator.java:39)
-	at saf.core.ui.GUICreatorDelegate.runDisplay(GUICreatorDelegate.java:188)
-	at saf.core.ui.GUICreator$1.run(GUICreator.java:18)
-	at simphony.util.ThreadUtilities$Runner.run(ThreadUtilities.java:33)
-	at simphony.util.ThreadUtilities.runInEventThread(ThreadUtilities.java:47)
-	at saf.core.ui.GUICreator.runDisplay(GUICreator.java:16)
-	at repast.simphony.ui.RSUIPlugin$1.run(RSUIPlugin.java:104)
-	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
-	at java.awt.EventQueue.access$500(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:709)
-	at java.awt.EventQueue$3.run(EventQueue.java:703)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-Caused by: org.xml.sax.SAXException: Unable to creates parameters
-java.lang.ClassNotFoundException: repast.simphony.parameter.NameConverter
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:126)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:509)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractXMLDocumentParser.emptyElement(AbstractXMLDocumentParser.java:182)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(XMLDocumentFragmentScannerImpl.java:1339)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2784)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:327)
-	at javax.xml.parsers.SAXParser.parse(SAXParser.java:328)
-	at repast.simphony.parameter.ParametersParser.<init>(ParametersParser.java:46)
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:168)
-	... 22 more
-Caused by: java.lang.ClassNotFoundException: repast.simphony.parameter.NameConverter
-	at org.java.plugin.standard.StandardPluginClassLoader.loadClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:264)
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:80)
-	... 37 more
-ERROR [AWT-EventQueue-0] 2018-11-12 11:10:28,363 repast.simphony.ui.RSApplication - Scenario Load Error
-repast.simphony.scenario.ScenarioLoadException: Constraining list '[swimming, fitness]' for parameter 'selectedSport' does not contain default value 'java.lang.Object@72ef312f'
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:220)
-	at repast.simphony.ui.RSApplication.open(RSApplication.java:359)
-	at repast.simphony.ui.RSAppConfigurator.postWindowOpen(RSAppConfigurator.java:39)
-	at saf.core.ui.GUICreatorDelegate.runDisplay(GUICreatorDelegate.java:188)
-	at saf.core.ui.GUICreator$1.run(GUICreator.java:18)
-	at simphony.util.ThreadUtilities$Runner.run(ThreadUtilities.java:33)
-	at simphony.util.ThreadUtilities.runInEventThread(ThreadUtilities.java:47)
-	at saf.core.ui.GUICreator.runDisplay(GUICreator.java:16)
-	at repast.simphony.ui.RSUIPlugin$1.run(RSUIPlugin.java:104)
-	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
-	at java.awt.EventQueue.access$500(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:709)
-	at java.awt.EventQueue$3.run(EventQueue.java:703)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-Caused by: repast.simphony.parameter.IllegalParameterException: Constraining list '[swimming, fitness]' for parameter 'selectedSport' does not contain default value 'java.lang.Object@72ef312f'
-	at repast.simphony.parameter.DefaultParameterSchema.setConstrainingList(DefaultParameterSchema.java:136)
-	at repast.simphony.parameter.DefaultSchema.addConstraint(DefaultSchema.java:72)
-	at repast.simphony.parameter.DefaultParameters.addConstraint(DefaultParameters.java:142)
-	at repast.simphony.parameter.ParametersCreator.addConstraint(ParametersCreator.java:96)
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:121)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:509)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractXMLDocumentParser.emptyElement(AbstractXMLDocumentParser.java:182)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(XMLDocumentFragmentScannerImpl.java:1339)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2784)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:327)
-	at javax.xml.parsers.SAXParser.parse(SAXParser.java:328)
-	at repast.simphony.parameter.ParametersParser.<init>(ParametersParser.java:46)
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:168)
-	... 22 more
-ERROR [AWT-EventQueue-0] 2018-11-12 11:22:01,724 repast.simphony.ui.RSApplication - Scenario Load Error
-repast.simphony.scenario.ScenarioLoadException: Unable to creates parameters
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:220)
-	at repast.simphony.ui.RSApplication.open(RSApplication.java:359)
-	at repast.simphony.ui.RSAppConfigurator.postWindowOpen(RSAppConfigurator.java:39)
-	at saf.core.ui.GUICreatorDelegate.runDisplay(GUICreatorDelegate.java:188)
-	at saf.core.ui.GUICreator$1.run(GUICreator.java:18)
-	at simphony.util.ThreadUtilities$Runner.run(ThreadUtilities.java:33)
-	at simphony.util.ThreadUtilities.runInEventThread(ThreadUtilities.java:47)
-	at saf.core.ui.GUICreator.runDisplay(GUICreator.java:16)
-	at repast.simphony.ui.RSUIPlugin$1.run(RSUIPlugin.java:104)
-	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
-	at java.awt.EventQueue.access$500(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:709)
-	at java.awt.EventQueue$3.run(EventQueue.java:703)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-Caused by: org.xml.sax.SAXException: Unable to creates parameters
-java.lang.ClassNotFoundException: boleen
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:126)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:509)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractXMLDocumentParser.emptyElement(AbstractXMLDocumentParser.java:182)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(XMLDocumentFragmentScannerImpl.java:1339)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2784)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:327)
-	at javax.xml.parsers.SAXParser.parse(SAXParser.java:328)
-	at repast.simphony.parameter.ParametersParser.<init>(ParametersParser.java:46)
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:168)
-	... 22 more
-Caused by: java.lang.ClassNotFoundException: boleen
-	at org.java.plugin.standard.StandardPluginClassLoader.loadClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:264)
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:87)
-	... 37 more
-ERROR [AWT-EventQueue-0] 2018-11-12 11:27:52,998 repast.simphony.ui.RSApplication - Scenario Load Error
-repast.simphony.scenario.ScenarioLoadException: Unable to creates parameters
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:220)
-	at repast.simphony.ui.RSApplication.open(RSApplication.java:359)
-	at repast.simphony.ui.RSAppConfigurator.postWindowOpen(RSAppConfigurator.java:39)
-	at saf.core.ui.GUICreatorDelegate.runDisplay(GUICreatorDelegate.java:188)
-	at saf.core.ui.GUICreator$1.run(GUICreator.java:18)
-	at simphony.util.ThreadUtilities$Runner.run(ThreadUtilities.java:33)
-	at simphony.util.ThreadUtilities.runInEventThread(ThreadUtilities.java:47)
-	at saf.core.ui.GUICreator.runDisplay(GUICreator.java:16)
-	at repast.simphony.ui.RSUIPlugin$1.run(RSUIPlugin.java:104)
-	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
-	at java.awt.EventQueue.access$500(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:709)
-	at java.awt.EventQueue$3.run(EventQueue.java:703)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-Caused by: org.xml.sax.SAXException: Unable to creates parameters
-java.lang.ClassNotFoundException: repast.simphony.parameter.StringConverterFactory$BoleanConverter
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:126)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:509)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractXMLDocumentParser.emptyElement(AbstractXMLDocumentParser.java:182)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(XMLDocumentFragmentScannerImpl.java:1339)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2784)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:327)
-	at javax.xml.parsers.SAXParser.parse(SAXParser.java:328)
-	at repast.simphony.parameter.ParametersParser.<init>(ParametersParser.java:46)
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:168)
-	... 22 more
-Caused by: java.lang.ClassNotFoundException: repast.simphony.parameter.StringConverterFactory$BoleanConverter
-	at org.java.plugin.standard.StandardPluginClassLoader.loadClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
-	at java.lang.Class.forName0(Native Method)
-	at java.lang.Class.forName(Class.java:264)
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:80)
-	... 37 more
-ERROR [AWT-EventQueue-0] 2018-11-12 12:20:48,691 repast.simphony.ui.RSApplication - Scenario Load Error
-repast.simphony.scenario.ScenarioLoadException: Constraining list '[swimming pool, fitness club]' for parameter 'SELECTED_FACILITY_TYPE' does not contain default value 'swimming'
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:220)
-	at repast.simphony.ui.RSApplication.open(RSApplication.java:359)
-	at repast.simphony.ui.RSAppConfigurator.postWindowOpen(RSAppConfigurator.java:39)
-	at saf.core.ui.GUICreatorDelegate.runDisplay(GUICreatorDelegate.java:188)
-	at saf.core.ui.GUICreator$1.run(GUICreator.java:18)
-	at simphony.util.ThreadUtilities$Runner.run(ThreadUtilities.java:33)
-	at simphony.util.ThreadUtilities.runInEventThread(ThreadUtilities.java:47)
-	at saf.core.ui.GUICreator.runDisplay(GUICreator.java:16)
-	at repast.simphony.ui.RSUIPlugin$1.run(RSUIPlugin.java:104)
-	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
-	at java.awt.EventQueue.access$500(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:709)
-	at java.awt.EventQueue$3.run(EventQueue.java:703)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:74)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:205)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-Caused by: repast.simphony.parameter.IllegalParameterException: Constraining list '[swimming pool, fitness club]' for parameter 'SELECTED_FACILITY_TYPE' does not contain default value 'swimming'
-	at repast.simphony.parameter.DefaultParameterSchema.setConstrainingList(DefaultParameterSchema.java:136)
-	at repast.simphony.parameter.DefaultSchema.addConstraint(DefaultSchema.java:72)
-	at repast.simphony.parameter.DefaultParameters.addConstraint(DefaultParameters.java:142)
-	at repast.simphony.parameter.ParametersCreator.addConstraint(ParametersCreator.java:96)
-	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:121)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:509)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractXMLDocumentParser.emptyElement(AbstractXMLDocumentParser.java:182)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(XMLDocumentFragmentScannerImpl.java:1339)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2784)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:602)
-	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:505)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:842)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:771)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
-	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
-	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:327)
-	at javax.xml.parsers.SAXParser.parse(SAXParser.java:328)
-	at repast.simphony.parameter.ParametersParser.<init>(ParametersParser.java:46)
-	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:168)
-	... 22 more
-FATAL [Thread-6] 2018-11-12 14:09:41,202 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (10000.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.CallBackAction.execute(CallBackAction.java:129)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
-	at java.lang.Thread.run(Thread.java:748)
-Caused by: java.lang.reflect.InvocationTargetException
-	at repastcity3.main.ContextManager$$FastClassByCGLIB$$56e46008.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.CallBackAction.execute(CallBackAction.java:127)
-	... 6 more
-Caused by: java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.CallBackAction.execute(CallBackAction.java:129)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
-	at repast.simphony.engine.schedule.Schedule.executeEndActions(Schedule.java:363)
-	at repastcity3.main.ContextManager.end(ContextManager.java:926)
-	... 9 more
-Caused by: java.lang.reflect.InvocationTargetException
-	at repastcity3.main.ContextManager$$FastClassByCGLIB$$56e46008.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.CallBackAction.execute(CallBackAction.java:127)
-	... 14 more
-Caused by: java.lang.NullPointerException
-	at repastcity3.main.ContextManager.outputAgentsData(ContextManager.java:626)
-	... 17 more
-FATAL [Thread-6] 2018-11-12 14:33:25,367 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
-Current tick (950.0)
-java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
-	at repast.simphony.engine.schedule.CallBackAction.execute(CallBackAction.java:129)
-	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:238)
-	at repast.simphony.engine.schedule.Schedule.executeEndActions(Schedule.java:363)
-	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:63)
-	at java.lang.Thread.run(Thread.java:748)
-Caused by: java.lang.reflect.InvocationTargetException
-	at repastcity3.main.ContextManager$$FastClassByCGLIB$$56e46008.invoke(<generated>)
-	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-	at repast.simphony.engine.schedule.CallBackAction.execute(CallBackAction.java:127)
-	... 6 more
-Caused by: java.lang.ArrayIndexOutOfBoundsException: 28
-	at repastcity3.main.ContextManager.outputAgentsData(ContextManager.java:510)
-	... 9 more
+INFO  [Thread-5] 2019-02-06 23:57:30,031 repast.simphony.batch.ssh.LocalSession -  experienceCar, 0.1
+INFO  [Thread-5] 2019-02-06 23:57:30,031 repast.simphony.batch.ssh.LocalSession -  experiencePT, 0.5
+INFO  [Thread-5] 2019-02-06 23:57:30,031 repast.simphony.batch.ssh.LocalSession -  minRankCar, 0.00985
+INFO  [Thread-5] 2019-02-06 23:57:30,031 repast.simphony.batch.ssh.LocalSession -  minRankBus, 0.00799
+INFO  [Thread-5] 2019-02-06 23:57:30,031 repast.simphony.batch.ssh.LocalSession -  trafficImpact, 0.1
+INFO  [Thread-5] 2019-02-06 23:57:30,031 repast.simphony.batch.ssh.LocalSession -  busStopDistanceImpact, 150.0
+INFO  [Thread-5] 2019-02-06 23:57:30,031 repast.simphony.batch.ssh.LocalSession - Happyagents, 4147
+INFO  [Thread-5] 2019-02-06 23:57:30,032 repast.simphony.batch.ssh.LocalSession -  sadOnes, 222
+INFO  [Thread-5] 2019-02-06 23:57:30,033 repast.simphony.batch.ssh.LocalSession - END_TIME, 10
+INFO  [Thread-5] 2019-02-06 23:57:30,033 repast.simphony.batch.ssh.LocalSession -  car correlation, 0.8545913949515952
+INFO  [Thread-5] 2019-02-06 23:57:30,033 repast.simphony.batch.ssh.LocalSession -  bus correlation, 0.8800793084988746
+INFO  [Thread-5] 2019-02-06 23:57:30,033 repast.simphony.batch.ssh.LocalSession - ChiSquareTest, 48.76169444282713
+INFO  [Thread-5] 2019-02-06 23:57:30,033 repast.simphony.batch.ssh.LocalSession - carCorrSpearman, 0.9111640951564104
+INFO  [Thread-5] 2019-02-06 23:57:30,033 repast.simphony.batch.ssh.LocalSession - busCorrSpearman, 0.934148484292342
+INFO  [Thread-5] 2019-02-06 23:57:30,033 repast.simphony.batch.ssh.LocalSession - simChi2: [426, 2300, 899, 123, 376, 23]
+INFO  [Thread-5] 2019-02-06 23:57:30,207 repast.simphony.batch.ssh.LocalSession - lut 06, 2019 11:57:30 PM repastcity3.agent.AgentFactory createRandomAgents
+INFO  [Thread-5] 2019-02-06 23:57:30,207 repast.simphony.batch.ssh.LocalSession - INFO: Creating 4369 agents using random method.
+INFO  [Thread-5] 2019-02-06 23:57:30,281 repast.simphony.batch.ssh.LocalSession - java version is: 64
+INFO  [Thread-5] 2019-02-06 23:57:30,281 repast.simphony.batch.ssh.LocalSession - heap space available: init = 266338304(260096K) used = 157090648(153408K) committed = 763887616(745984K) max = 3784310784(3695616K)
+INFO  [Thread-5] 2019-02-06 23:57:30,281 repast.simphony.batch.ssh.LocalSession - 
+INFO  [Thread-5] 2019-02-06 23:57:30,281 repast.simphony.batch.ssh.LocalSession - ContextManager.number of pools: 27 and numberOfFitness:0
+INFO  [Thread-5] 2019-02-06 23:57:30,284 repast.simphony.batch.ssh.LocalSession - ContextManager.number of car drivers: 3693 and bus passengers:676
+INFO  [Thread-5] 2019-02-06 23:57:30,285 repast.simphony.batch.ssh.LocalSession -  Model is running for service type: swimming
+INFO  [Thread-5] 2019-02-06 23:57:30,285 repast.simphony.batch.ssh.LocalSession -  Display clients movement or turn on teleportation(faster): teleportation_on
+INFO  [Thread-5] 2019-02-06 23:57:30,359 repast.simphony.batch.ssh.LocalSession - lut 06, 2019 11:57:30 PM repastcity3.main.ContextManager end
+INFO  [Thread-5] 2019-02-06 23:57:30,359 repast.simphony.batch.ssh.LocalSession - INFO: Simulation is ending after: 10.0 iterations.
+INFO  [Thread-5] 2019-02-06 23:57:30,376 repast.simphony.batch.ssh.LocalSession - lut 06, 2019 11:57:30 PM repastcity3.main.ContextManager outputAgentsData
+INFO  [Thread-5] 2019-02-06 23:57:30,376 repast.simphony.batch.ssh.LocalSession - INFO:  chosenLocation, 42.0
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession -  numberOfRuns, 2
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession -  experienceCar, 0.1
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession -  experiencePT, 0.5
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession -  minRankCar, 0.00985
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession -  minRankBus, 0.00799
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession -  trafficImpact, 0.1
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession -  busStopDistanceImpact, 150.0
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession - Happyagents, 4165
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession -  sadOnes, 204
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession - END_TIME, 10
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession -  car correlation, 0.8532268027380988
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession -  bus correlation, 0.8645713427790518
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession - ChiSquareTest, 40.5063960044411
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession - carCorrSpearman, 0.9020524542048463
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession - busCorrSpearman, 0.9101959590540768
+INFO  [Thread-5] 2019-02-06 23:57:30,377 repast.simphony.batch.ssh.LocalSession - simChi2: [393, 2286, 956, 128, 372, 30]
+INFO  [AWT-EventQueue-0] 2019-02-06 23:58:33,392 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: F:\fire_java\location_analysis_ABM\repastcity_bankers\output\config.props
+INFO  [AWT-EventQueue-0] 2019-02-06 23:58:33,435 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	F:\fire_java\location_analysis_ABM\repastcity_bankers\batch\batch_params.xml to
+	C:\Users\Melkor\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-06 23:58:40,566 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Melkor\AppData\Local\Temp\Melkor_localhost3037384294523163428.zip to 
+C:\Users\Melkor\AppData\Local\Temp\simphony_model_1549493917919 ...
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-06 23:58:40,599 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-06 23:58:40,600 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0447
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-06 23:58:40,600 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Melkor\AppData\Local\Temp\simphony_model_1549493917919\Melkor_localhost3037384294523163428.zip
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-06 23:58:41,092 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-5] 2019-02-06 23:58:49,909 repast.simphony.batch.ssh.LocalSession - lut 06, 2019 11:58:49 PM repastcity3.agent.AgentFactory createRandomAgents
+INFO  [Thread-5] 2019-02-06 23:58:49,910 repast.simphony.batch.ssh.LocalSession - INFO: Creating 4369 agents using random method.
+INFO  [Thread-5] 2019-02-06 23:58:50,021 repast.simphony.batch.ssh.LocalSession - java version is: 64
+INFO  [Thread-5] 2019-02-06 23:58:50,023 repast.simphony.batch.ssh.LocalSession - heap space available: init = 266338304(260096K) used = 179592984(175383K) committed = 697827328(681472K) max = 3784310784(3695616K)
+INFO  [Thread-5] 2019-02-06 23:58:50,023 repast.simphony.batch.ssh.LocalSession - 
+INFO  [Thread-5] 2019-02-06 23:58:50,023 repast.simphony.batch.ssh.LocalSession - ContextManager.number of pools: 27 and numberOfFitness:0
+INFO  [Thread-5] 2019-02-06 23:58:50,024 repast.simphony.batch.ssh.LocalSession - ContextManager.number of car drivers: 3693 and bus passengers:676
+INFO  [Thread-5] 2019-02-06 23:58:50,024 repast.simphony.batch.ssh.LocalSession -  Model is running for service type: swimming
+INFO  [Thread-5] 2019-02-06 23:58:50,024 repast.simphony.batch.ssh.LocalSession -  Display clients movement or turn on teleportation(faster): teleportation_on
+INFO  [Thread-5] 2019-02-06 23:58:50,114 repast.simphony.batch.ssh.LocalSession - lut 06, 2019 11:58:50 PM repastcity3.main.ContextManager end
+INFO  [Thread-5] 2019-02-06 23:58:50,114 repast.simphony.batch.ssh.LocalSession - INFO: Simulation is ending after: 10.0 iterations.
+INFO  [Thread-5] 2019-02-06 23:58:50,158 repast.simphony.batch.ssh.LocalSession - lut 06, 2019 11:58:50 PM repastcity3.main.ContextManager outputAgentsData
+INFO  [Thread-5] 2019-02-06 23:58:50,158 repast.simphony.batch.ssh.LocalSession - INFO:  chosenLocation, 42.0
+INFO  [Thread-5] 2019-02-06 23:58:50,158 repast.simphony.batch.ssh.LocalSession -  numberOfRuns, 1
+INFO  [Thread-5] 2019-02-06 23:58:50,158 repast.simphony.batch.ssh.LocalSession -  experienceCar, 0.1
+INFO  [Thread-5] 2019-02-06 23:58:50,158 repast.simphony.batch.ssh.LocalSession -  experiencePT, 0.5
+INFO  [Thread-5] 2019-02-06 23:58:50,158 repast.simphony.batch.ssh.LocalSession -  minRankCar, 0.00985
+INFO  [Thread-5] 2019-02-06 23:58:50,158 repast.simphony.batch.ssh.LocalSession -  minRankBus, 0.00799
+INFO  [Thread-5] 2019-02-06 23:58:50,158 repast.simphony.batch.ssh.LocalSession -  trafficImpact, 0.1
+INFO  [Thread-5] 2019-02-06 23:58:50,159 repast.simphony.batch.ssh.LocalSession -  busStopDistanceImpact, 150.0
+INFO  [Thread-5] 2019-02-06 23:58:50,159 repast.simphony.batch.ssh.LocalSession - Happyagents, 4161
+INFO  [Thread-5] 2019-02-06 23:58:50,159 repast.simphony.batch.ssh.LocalSession -  sadOnes, 208
+INFO  [Thread-5] 2019-02-06 23:58:50,159 repast.simphony.batch.ssh.LocalSession - END_TIME, 10
+INFO  [Thread-5] 2019-02-06 23:58:50,159 repast.simphony.batch.ssh.LocalSession -  car correlation, 0.8488668632514187
+INFO  [Thread-5] 2019-02-06 23:58:50,159 repast.simphony.batch.ssh.LocalSession -  bus correlation, 0.9232845409647737
+INFO  [Thread-5] 2019-02-06 23:58:50,159 repast.simphony.batch.ssh.LocalSession - ChiSquareTest, 35.55664726418787
+INFO  [Thread-5] 2019-02-06 23:58:50,159 repast.simphony.batch.ssh.LocalSession - carCorrSpearman, 0.9293873770595388
+INFO  [Thread-5] 2019-02-06 23:58:50,159 repast.simphony.batch.ssh.LocalSession - busCorrSpearman, 0.9581010095306072
+INFO  [Thread-5] 2019-02-06 23:58:50,159 repast.simphony.batch.ssh.LocalSession - simChi2: [421, 2252, 956, 142, 366, 24]
+INFO  [pool-3-thread-1] 2019-02-06 23:59:41,096 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Melkor\AppData\Local\Temp\simphony_model_1549493917919 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-06 23:59:41,098 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,0083
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-06 23:59:41,121 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Melkor\AppData\Local\Temp\simphony_model_1549493917919
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-06 23:59:41,175 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into F:/fire_java/location_analysis_ABM/repastcity_bankers/output
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-06 23:59:41,176 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0013
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-06 23:59:41,176 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,0543
+INFO  [AWT-EventQueue-0] 2019-02-07 00:09:01,905 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: F:\fire_java\location_analysis_ABM\repastcity_bankers\output\config.props
+INFO  [AWT-EventQueue-0] 2019-02-07 00:09:01,948 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	F:\fire_java\location_analysis_ABM\repastcity_bankers\batch\batch_params.xml to
+	C:\Users\Melkor\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-07 00:09:09,219 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Melkor\AppData\Local\Temp\Melkor_localhost5077836911408167624.zip to 
+C:\Users\Melkor\AppData\Local\Temp\simphony_model_1549494546435 ...
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-07 00:09:09,252 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-07 00:09:09,253 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0469
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-07 00:09:09,253 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Melkor\AppData\Local\Temp\simphony_model_1549494546435\Melkor_localhost5077836911408167624.zip
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-07 00:09:09,846 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-5] 2019-02-07 00:09:18,719 repast.simphony.batch.ssh.LocalSession - lut 07, 2019 12:09:18 AM repastcity3.agent.AgentFactory createRandomAgents
+INFO  [Thread-5] 2019-02-07 00:09:18,720 repast.simphony.batch.ssh.LocalSession - INFO: Creating 4369 agents using random method.
+INFO  [Thread-5] 2019-02-07 00:09:18,836 repast.simphony.batch.ssh.LocalSession - java version is: 64
+INFO  [Thread-5] 2019-02-07 00:09:18,838 repast.simphony.batch.ssh.LocalSession - heap space available: init = 266338304(260096K) used = 179785248(175571K) committed = 698875904(682496K) max = 3784310784(3695616K)
+INFO  [Thread-5] 2019-02-07 00:09:18,839 repast.simphony.batch.ssh.LocalSession - 
+INFO  [Thread-5] 2019-02-07 00:09:18,839 repast.simphony.batch.ssh.LocalSession - ContextManager.number of pools: 27 and numberOfFitness:0
+INFO  [Thread-5] 2019-02-07 00:09:18,840 repast.simphony.batch.ssh.LocalSession - ContextManager.number of car drivers: 3693 and bus passengers:676
+INFO  [Thread-5] 2019-02-07 00:09:18,840 repast.simphony.batch.ssh.LocalSession -  Model is running for service type: swimming
+INFO  [Thread-5] 2019-02-07 00:09:18,840 repast.simphony.batch.ssh.LocalSession -  Display clients movement or turn on teleportation(faster): teleportation_on
+INFO  [Thread-5] 2019-02-07 00:09:18,933 repast.simphony.batch.ssh.LocalSession - lut 07, 2019 12:09:18 AM repastcity3.main.ContextManager end
+INFO  [Thread-5] 2019-02-07 00:09:18,933 repast.simphony.batch.ssh.LocalSession - INFO: Simulation is ending after: 10.0 iterations.
+INFO  [Thread-5] 2019-02-07 00:09:18,978 repast.simphony.batch.ssh.LocalSession - lut 07, 2019 12:09:18 AM repastcity3.main.ContextManager outputAgentsData
+INFO  [Thread-5] 2019-02-07 00:09:18,978 repast.simphony.batch.ssh.LocalSession - INFO:  chosenLocation, 42.0
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession -  numberOfRuns, 1
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession -  experienceCar, 0.1
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession -  experiencePT, 0.5
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession -  minRankCar, 0.00985
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession -  minRankBus, 0.00799
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession -  trafficImpact, 0.1
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession -  busStopDistanceImpact, 150.0
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession - Happyagents, 4152
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession -  sadOnes, 217
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession - END_TIME, 10
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession -  car correlation, 0.8180278895868622
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession -  bus correlation, 0.8391651479104218
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession - ChiSquareTest, 40.78351198872976
+INFO  [Thread-5] 2019-02-07 00:09:18,979 repast.simphony.batch.ssh.LocalSession - carCorrSpearman, 0.9202757361079746
+INFO  [Thread-5] 2019-02-07 00:09:18,980 repast.simphony.batch.ssh.LocalSession - busCorrSpearman, 0.9101959590540768
+INFO  [Thread-5] 2019-02-07 00:09:18,980 repast.simphony.batch.ssh.LocalSession - simChi2: [408, 2261, 961, 123, 383, 16]
+INFO  [pool-3-thread-1] 2019-02-07 00:10:09,850 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Melkor\AppData\Local\Temp\simphony_model_1549494546435 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-07 00:10:09,851 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,0100
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-07 00:10:09,871 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Melkor\AppData\Local\Temp\simphony_model_1549494546435
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-07 00:10:09,919 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into F:/fire_java/location_analysis_ABM/repastcity_bankers/output
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-07 00:10:09,919 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0011
+INFO  [SwingWorker-pool-2-thread-1] 2019-02-07 00:10:09,919 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,0581

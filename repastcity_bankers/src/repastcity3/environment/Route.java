@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger; //KEJ+ 	if (GlobalVars.loggerOn) {
+import java.util.logging.Logger; //Lukasz Kowalski comment: 	if (GlobalVars.loggerOn) {
 import java.util.Map;
 import java.util.Vector;
 
@@ -182,7 +182,7 @@ public class Route implements Cacheable {
 	 */
 	protected void setRoute() throws Exception {
 		long time = System.nanoTime();
-		// this.routeX = new ArrayList<Coordinate>(); //Kej+ interesting part...
+		// this.routeX = new ArrayList<Coordinate>(); //Lukasz Kowalski comment: interesting part...
 		// this.roadsX = new ArrayList<Road>();
 		// this.routeDescriptionX = new ArrayList<String>();
 		// this.routeSpeedsX = new ArrayList<Double>();
@@ -246,7 +246,7 @@ public class Route implements Cacheable {
 				 * Not on a road so the first coordinate to add to the route is the point on the closest road segment.
 				 */
 				currentCoord = getNearestRoadCoord(currentCoord);
-				addToRoute(currentCoord, Road.nullRoad, 1, "setRoute() initial"); //Kej+ comment it sets speed at 0 outside the network
+				addToRoute(currentCoord, Road.nullRoad, 1, "setRoute() initial"); //Lukasz Kowalski comment: comment it sets speed at 0 outside the network
 			}
 			if (!coordOnRoad(destCoord)) {
 				/*
@@ -378,7 +378,7 @@ public class Route implements Cacheable {
 	private void addToRoute(Coordinate coord, Road road, double speed, String description) {
 		this.routeX.add(coord);
 		this.roadsX.add(road);
-		this.routeSpeedsX.add(speed); // Kej change:  ALLELUJA!!!! TA METODA JEST WYKORZYTYWANA AKTUALNIE, WIEC TUTAJ TRZEBA ZMIENIAC SPEED
+		this.routeSpeedsX.add(speed);
 		this.routeDescriptionX.add(description);
 	}
 
@@ -399,7 +399,7 @@ public class Route implements Cacheable {
 		for (Coordinate c : coords) {
 			this.routeX.add(c);
 			this.roadsX.add(road);
-			this.routeSpeedsX.add(speed); //Kej change: ALLELUJA!!!! this version is not used now
+			this.routeSpeedsX.add(speed); 
 			this.routeDescriptionX.add(description);
 		}
 	}
@@ -431,21 +431,21 @@ public class Route implements Cacheable {
 		}
 		try {
 			if (this.atDestination()) {
-				this.printRoute();//temp KEJ+
+				this.printRoute();//temp Lukasz Kowalski comment:
 				return;
 			}
 			// double time = System.nanoTime();
 
 			// Store the roads the agent walks along (used to populate the awareness space)
 			// List<Road> roadsPassed = new ArrayList<Road>();
-			double distTravelled = 0; // The distance travelled so far, kej+: it is in meters
+			double distTravelled = 0; // The distance travelled so far, Lukasz Kowalski comment:: it is in meters
 			Coordinate currentCoord = null; // Current location
 			Coordinate target = null; // Target coordinate we're heading for (in route list)
 			boolean travelledMaxDist = false; // True when travelled maximum distance this iteration
-			double speed; // Kej+The speed MULTIPLIER to travel to next coord
+			double speed; // Lukasz Kowalski comment:The speed MULTIPLIER to travel to next coord
 			currentCoord = ContextManager.getAgentGeometry(this.agent).getCoordinate();
 
-			double myDistance=0; //Kej+ this is my distance in meters
+			double myDistance=0; //Lukasz Kowalski comment: this is my distance in meters
 
 
 			while (!travelledMaxDist && !this.atDestination()) {
@@ -461,8 +461,8 @@ public class Route implements Cacheable {
 				this.distance(currentCoord, target, distAndAngle); //distAndAngle[0] =distance in meters
 				// divide by speed [multiplayer] because distance might effectively be shorter
 
-				double distToTarget = distAndAngle[0] / speed; //Kej+ here we get meters distance to target divided by speed multiplier. distAndAngle[0] is in meters, and speed is without units - it is multiplier taken from GlobalVars (for this edge and this agent)
-				//Kej+ rozkmina
+				double distToTarget = distAndAngle[0] / speed; //Lukasz Kowalski comment: here we get meters distance to target divided by speed multiplier. distAndAngle[0] is in meters, and speed is without units - it is multiplier taken from GlobalVars (for this edge and this agent)
+				//Lukasz Kowalski comment: rozkmina
 
 
 				// If we can get all the way to the next coords on the route then just go there
@@ -477,7 +477,7 @@ public class Route implements Cacheable {
 						ContextManager.moveAgent(this.agent, geomFac.createPoint(currentCoord));
 						// ContextManager.agentGeography.move(this.agent, geomFac.createPoint(currentCoord));
 
-						//						this.agent.setMyDistance(myDistance);//kej+
+						//						this.agent.setMyDistance(myDistance);//Lukasz Kowalski comment:
 
 						break; // Break out of while loop, have reached end of route.
 					}
@@ -496,7 +496,7 @@ public class Route implements Cacheable {
 					if (GlobalVars.loggerOn) {
 						LOGGER.log(Level.WARNING, "Travel(): UNUSUAL CONDITION HAS OCCURED!");
 					}
-				} else {	 //kej+ important place
+				} else {	 //Lukasz Kowalski comment: important place
 					// Otherwise move as far as we can towards the target along the road we're on.
 					// Move along the vector the maximum distance we're allowed this turn (take into account relative
 					// speed)
@@ -505,7 +505,7 @@ public class Route implements Cacheable {
 					// this for efficiency)
 					myDistance+=distToTravel;
 
-					//	myDistance+=GlobalVars.GEOGRAPHY_PARAMS.TRAVEL_PER_TURN - distTravelled;//Kej+
+					//	myDistance+=GlobalVars.GEOGRAPHY_PARAMS.TRAVEL_PER_TURN - distTravelled;//Lukasz Kowalski comment:
 
 					// ContextManager.agentGeography.move(this.agent, geomFac.createPoint(currentCoord));
 					ContextManager.moveAgent(this.agent, geomFac.createPoint(currentCoord));
@@ -1017,10 +1017,10 @@ public class Route implements Cacheable {
 				 * edge but doesn't have any other way of getting to the destination. in these cases set speed to 1
 				 * (equivalent to walking).
 				 */
-				double speed = e.getSpeed(); //kej+ change ROZKMINA
-				//				System.out.print(" my speed: " + speed);//Kej+ commented out
+				double speed = e.getSpeed(); //Lukasz Kowalski comment: change ROZKMINA
+				//				System.out.print(" my speed: " + speed);//Lukasz Kowalski comment: commented out
 				if (speed < 1){
-					//					System.out.print(" ups!!! no speed! "); //Kej+ commented out
+					//					System.out.print(" ups!!! no speed! "); //Lukasz Kowalski comment: commented out
 					speed = 1;}
 
 				if (r == null) { // No road associated with this edge (it is a
@@ -1047,7 +1047,7 @@ public class Route implements Cacheable {
 					}
 					// Add all the road geometry's coords
 					for (int j = 0; j < roadCoords.length; j++) {
-						this.addToRoute(roadCoords[j], r, speed, "getRouteBetweenJuctions - on road"); //KEJ+ ROZKMINA. HERE WE ADD SPEED AVAILABLE FOR Z ROUTE FOR AN AGENT
+						this.addToRoute(roadCoords[j], r, speed, "getRouteBetweenJuctions - on road"); //Lukasz Kowalski comment: HERE WE ADD SPEED AVAILABLE FOR Z ROUTE FOR AN AGENT
 						// (Note that last coord will have wrong weight)
 					} // for roadCoords.length
 				} // if road!=null
@@ -1348,7 +1348,7 @@ public class Route implements Cacheable {
 	/**
 	 * Calculate the distance (in meters) between two Coordinates, using the coordinate reference system that the
 	 * roadGeography is using. For efficiency it can return the angle as well (in the range -0 to 2PI) if returnVals
-	 * passed in as a double[2] (the distance is stored in index 0 and angle stored in index 1). Kej+ it returns stright line distance!!!
+	 * passed in as a double[2] (the distance is stored in index 0 and angle stored in index 1). Lukasz Kowalski comment: it returns stright line distance!!!
 	 * 
 	 * @param c1
 	 * @param c2
@@ -1509,7 +1509,7 @@ public class Route implements Cacheable {
 			calculator.setDestinationGeographicPoint(c2.x, c2.y);
 			dist = calculator.getOrthodromicDistance();
 			totalDist += dist; //in meters
-			totalTime += (dist /(speed * 83.3) ); //Kej +in minutes// 83.3 meters/minute is speed of walker - this speed is later on multiplied by speed multiplier, but e.g. for cars 33.8km/h==563m/min //Kej+ it was: totalTime += (dist / speed);
+			totalTime += (dist /(speed * 83.3) ); //Lukasz Kowalski comment +in minutes// 83.3 meters/minute is speed of walker - this speed is later on multiplied by speed multiplier, but e.g. for cars 33.8km/h==563m/min //Lukasz Kowalski comment: it was: totalTime += (dist / speed);
 			myCheck +=1;
 		}
 

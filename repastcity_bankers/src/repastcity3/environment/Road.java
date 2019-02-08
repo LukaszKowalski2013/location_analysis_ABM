@@ -102,7 +102,7 @@ public class Road implements FixedGeography, Identified {
 		if (this.access != null) { // Could be null because not using accessibility in GRID environment for example
 			this.accessibility = new ArrayList<String>();
 			for (String word : this.access.split(" ")) {
-//				if (word.equals(GlobalVars.TRANSPORT_PARAMS.MAJOR_ROAD)) { //KEJ+ change: I commented out this part, it was connected with major roads, that I don't use
+//				if (word.equals(GlobalVars.TRANSPORT_PARAMS.MAJOR_ROAD)) { //Lukasz Kowalski comment: change: I commented out this part, it was connected with major roads, that I don't use
 //					// Special case: 'majorRoad' isn't a type of access, means the road is quick for car drivers
 //					this.majorRoad = true;
 //				} else {
@@ -132,7 +132,7 @@ public class Road implements FixedGeography, Identified {
 		this.access = access;	
 //		System.out.print("Hurra we have road access : "+ access);
 		}
-	public String getAccess(){ //Kej+ I added this so access can be taken from this class
+	public String getAccess(){ //Lukasz Kowalski comment: I added this so access can be taken from this class
 		return this.access;}
 
 	public boolean isMajorRoad() {

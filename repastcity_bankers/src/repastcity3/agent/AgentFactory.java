@@ -108,7 +108,7 @@ import repastcity3.main.GlobalVars;
  */
 public class AgentFactory {
 	
-	int i=1;// KEJ+ it is to control number of create agent method uses
+	int i=1;// Lukasz Kowalski comment: it is to control number of create agent method uses
 
 	private static Logger LOGGER = Logger.getLogger(AgentFactory.class.getName());
 
@@ -185,7 +185,7 @@ public class AgentFactory {
 			return;
 		}
 		
-		//KEJ+ NEW WAY
+		//Lukasz Kowalski comment: NEW WAY
 		int agentWithCars=-1; //max 32K
 		int agentWithBus=-1;
 		int allAgents=0;
@@ -238,28 +238,7 @@ public class AgentFactory {
 		
 		LOGGER.info("Creating " + allAgents + " agents using " + this.methodToUse + " method.");
 		
-		
-//		HERE WE HAVE NICK'S OLD METHOD
-		// Create agents in randomly chosen houses. Use two while loops in case there are more agents
-		// than houses, so that houses have to be looped over twice.
-//		LOGGER.info("Creating " + numAgents + " agents using " + this.methodToUse + " method.");
-//		int agentsCreated = 0;
-//		while (agentsCreated < numAgents) {
-//			Iterator<Building> i = ContextManager.buildingContext.getRandomObjects(Building.class, numAgents)
-//					.iterator();
-//			while (i.hasNext() && agentsCreated < numAgents) {
-//				Building b = i.next(); // Find a building
-//				IAgent a = new DefaultAgent(); // Create a new agent
-//				a.setHome(b); // Tell the agent where it lives
-//				b.addAgent(a); // Tell the building that the agent lives there
-//				ContextManager.addAgentToContext(a); // Add the agent to the context
-//				// Finally move the agent to the place where it lives.
-//				ContextManager.moveAgent(a, ContextManager.buildingProjection.getGeometry(b).getCentroid());
-//				agentsCreated++;
-//			}
-//		} //commented out
-		
-		
+
 	}
 
 	/**
@@ -272,9 +251,9 @@ public class AgentFactory {
 	 */
 	@SuppressWarnings("unchecked")
 	private void createPointAgents(boolean dummy) throws AgentCreationException {
-		if(i!=1){ //do nothing// KEJ+
+		if(i!=1){ //do nothing// Lukasz Kowalski comment:
 		}
-		else{// KEJ+
+		else{// Lukasz Kowalski comment:
 		// See if there is a single type of agent to create or should read a colum in shapefile
 		boolean singleType = this.definition.contains("$");
 
@@ -303,7 +282,7 @@ public class AgentFactory {
 				throw new AgentCreationException(e);
 			}
 		} else {
-			// TODO Implement agent creation from shapefile value;
+			
 			throw new AgentCreationException("Have not implemented the method of reading agent classes from a "
 					+ "shapefile yet.");
 		}
@@ -320,7 +299,7 @@ public class AgentFactory {
 				}
 			}
 		}
-		System.out.print("AGENTS NUMBER IS:" +numAgents); // kej+
+		System.out.print("AGENTS NUMBER IS:" +numAgents); // Lukasz Kowalski comment:
 		
 		if (singleType) {
 			LOGGER.info("Have created " + numAgents + " of type " + clazz.getName().toString() + " from file "
@@ -330,7 +309,7 @@ public class AgentFactory {
 			LOGGER.info("Have created " + numAgents + " of different types from file " + fileName);
 		}
 		i++;
-	} //end of my else KEJ+
+	} //end of my else Lukasz Kowalski comment:
 	}
 
 	private void createAreaAgents(boolean dummy) throws AgentCreationException {

@@ -47,7 +47,7 @@ public class NetworkEdge<T> extends RepastEdge<T> {
 	private boolean majorRoad = false; // If edge represents a major road car drivers can travel very fast
 	private Road road; // The Road object which this Edge is used to represent
 	
-//	KEJ+ another way to solve mySpeed problem
+//	Lukasz Kowalski comment: another way to solve mySpeed problem
 //	1. GET access string from road this network edge is on
 //	String StringAccess=road.getAccess();
 //	2. separate it and put into ArrayList
@@ -79,7 +79,7 @@ public class NetworkEdge<T> extends RepastEdge<T> {
 	 */
 	@Override
 	public double getWeight() { 
-		return super.getWeight() / this.getSpeed();//Kej+ interesting
+		return super.getWeight() / this.getSpeed();//Lukasz Kowalski comment: interesting
 	}
 
 	/**
@@ -92,9 +92,9 @@ public class NetworkEdge<T> extends RepastEdge<T> {
 	 *         Double.MIN_VALUE if the agent doesn't have the appropriate transport to get across this edge).
 	 */
 
-	public double getSpeed() { //Kej+ important. This method returns speed of an agent. I think here there is an error. Right now it doesn't read access mode correctly and it doesnt enter to for loop
+	public double getSpeed() { //Lukasz Kowalski comment: important. This method returns speed of an agent. I think here there is an error. Right now it doesn't read access mode correctly and it doesnt enter to for loop
 
-		//Kej+ I deleted here a bit of code :)))...
+		//Lukasz Kowalski comment: I deleted here a bit of code :)))...
 		double quickestSpeed = 0.00001; // Can't use MIN_VALUE because when divided by weight result will be 0
 		String quickestTransport = "";
 		
@@ -110,8 +110,8 @@ public class NetworkEdge<T> extends RepastEdge<T> {
 			return quickestSpeed;
 			
 //		Nick's old code - I commented it out, because it did not read access String ArrayList correctly - it returned null, so speed stayed 0,00001.
-//		for (String transport:this.access) { // Each method that can be used to travel across this Edge //Kej+ I put "myAccess" here, instead of access
-//			if (GlobalVars.TRANSPORT_PARAMS.currentAgent.isAvailableTransport(transport) && // KEJ+ 	OLD: if (GlobalVars.TRANSPORT_PARAMS.currentBurglar.isAvailableTransport(transport) &&
+//		for (String transport:this.access) { // Each method that can be used to travel across this Edge //Lukasz Kowalski comment: I put "myAccess" here, instead of access
+//			if (GlobalVars.TRANSPORT_PARAMS.currentAgent.isAvailableTransport(transport) && // Lukasz Kowalski comment: 	OLD: if (GlobalVars.TRANSPORT_PARAMS.currentBurglar.isAvailableTransport(transport) &&
 //					(GlobalVars.TRANSPORT_PARAMS.getSpeed(transport) > quickestSpeed ))
 //			{
 //				// The agent is able to use this transport method and it's the quickest found so far.
@@ -119,7 +119,7 @@ public class NetworkEdge<T> extends RepastEdge<T> {
 //				quickestTransport = transport;
 //			}
 //		}
-////		 Do a check if fastest method is by car and is a major road, will be even quicker. //KEJ+ I commented this out for a moment, I don't need majorRoads
+////		 Do a check if fastest method is by car and is a major road, will be even quicker. //Lukasz Kowalski comment: I commented this out for a moment, I don't need majorRoads
 //		if (quickestTransport.equals(GlobalVars.TRANSPORT_PARAMS.CAR) && this.majorRoad) {
 //			quickestSpeed = quickestSpeed*GlobalVars.TRANSPORT_PARAMS.MAJOR_ROAD_ADVANTAGE;
 //		}

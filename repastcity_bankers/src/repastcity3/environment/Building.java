@@ -31,7 +31,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import com.vividsolutions.jts.geom.Coordinate;
 
 import repastcity3.agent.IAgent;
-import repastcity3.agent.DefaultAgent; //Kej+ I added this
+import repastcity3.agent.DefaultAgent; //Lukasz Kowalski comment: I added this
 import repastcity3.exceptions.NoIdentifierException;
 import repastcity3.main.ContextManager;
 import repastcity3.main.GlobalVars;
@@ -62,11 +62,11 @@ public class Building implements FixedGeography, Identified {
 	private Coordinate coords;
 
 	// my variables:
-	private int swimming; //KEJ+  added from shapefile
+	private int swimming; //Lukasz Kowalski comment:  added from shapefile
 
-	private double clubID; //KEJ+  added from shapefile
+	private double clubID; //Lukasz Kowalski comment:  added from shapefile
 
-	private int fitness; //KEJ+  added from shapefile
+	private int fitness; //Lukasz Kowalski comment:  added from shapefile
 	
 	private int clientEntries;
 	
@@ -74,17 +74,17 @@ public class Building implements FixedGeography, Identified {
 	
 	private double capacity; //it changes over time based on timeArray
 	
-	private double[][] clubTimeArrayFIT=new double[12][2]; //KEJ+ new capacity taken from csv double[][]
+	private double[][] clubTimeArrayFIT=new double[12][2]; //Lukasz Kowalski comment: new capacity taken from csv double[][]
 								//1st row is clubID, 1st col are times of entry, 2nd is number of rooms or swimming lanes
 	private double[][] clubTimeArraySWIM=new double[12][2];
 		
-	private double accessCar; //KEJ+  added from shapefile// it should imitate access time for car drivers, which means congestion and parking time
+	private double accessCar; //Lukasz Kowalski comment:  added from shapefile// it should imitate access time for car drivers, which means congestion and parking time
 	
-	private double accessBus; //KEJ+  added from shapefile // it should imitate access time for passengers of public transport
+	private double accessBus; //Lukasz Kowalski comment:  added from shapefile // it should imitate access time for passengers of public transport
 	
 	private int sumOfClients;
 	
-	private int ZONE_ID; //KEJ+ attribute added from shapefile ////WATCH@ TYPE - here we have int, but everywhere else there is double
+	private int ZONE_ID; //Lukasz Kowalski comment: attribute added from shapefile ////WATCH@ TYPE - here we have int, but everywhere else there is double
 	
 	public int agentsCarS;  //it is needed for model build, it says how many agents of my type will apear in simulation
 	public int agentsBusS;
@@ -133,7 +133,7 @@ public class Building implements FixedGeography, Identified {
 	}
 	
 	//my "sport" methods for counting agents who get inside and go out
-	public void removeAgent(IAgent a){ //KEJ+ agents who finished sport practice 4 today
+	public void removeAgent(IAgent a){ //Lukasz Kowalski comment: agents who finished sport practice 4 today
 		this.agents.remove(a); 
 	}
 	
@@ -193,7 +193,7 @@ public class Building implements FixedGeography, Identified {
 		this.numBurglaries++;
 	}
 	
-	//KEJ+ my getters&setters & others
+	//Lukasz Kowalski comment: my getters&setters & others
 	public void clientEntry() {
 		this.clientEntries++;
 		}
@@ -209,13 +209,12 @@ public class Building implements FixedGeography, Identified {
 			return 0; 
 		} // this -1 means that capacity is 0 =>error in data loading
 	}
-	public double getCrowdByHour(){ //TODO delete it after all
+	public double getCrowdByHour(){
 		return crowdByHour;
 	}
 	
 	public int getRandomAgentIndex(int arraySize) {
 		int rnd = new Random().nextInt(arraySize);
-//		System.out.print("Hey dude!!! " +rnd+"! ");// temp to check if it works
 		return rnd;
 		}
 	
@@ -354,7 +353,7 @@ public class Building implements FixedGeography, Identified {
 		return capacityAtTime;
 	}
 
-//TODO
+
 	public void setTimeArray(double[][] timeArray){ //timeArray should be taken from MyMatrixes.java according to club type set at GlobalVars
 		//find col with this building clubID
 		int col=0;

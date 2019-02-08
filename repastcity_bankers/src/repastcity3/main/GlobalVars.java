@@ -62,14 +62,14 @@ public abstract class GlobalVars {
 		 * @see Route
 		 */
 		public enum BUFFER_DISTANCE {
-			/** The smallest distance, rarely used. Approximately 0.1m*/ //KEJ+ changed max
+			/** The smallest distance, rarely used. Approximately 0.1m*/ //Lukasz Kowalski comment: changed max
 			SMALL(0.00000001, "0.1"),
 			/** Most commonly used distance, OK for looking for nearby houses or roads.
 			 * Approximatey 50m */
-			MEDIUM(0.002,"150"), //KEJ+ changed max to around 200 m
+			MEDIUM(0.002,"150"), //Lukasz Kowalski comment: changed max to around 200 m
 			/** Largest buffer, approximately 550m. I use this when doing things that
 			 * don't need to be done often, like populating caches.*/
-			LARGE(0.01,"1000"); //KEJ+ changed max
+			LARGE(0.01,"1000"); //Lukasz Kowalski comment: changed max
 			/**
 			 * @param dist The distance to be passed to the search function (in lat/long?)
 			 * @param distInMeters An approximate equivalent distance in meters.
@@ -84,7 +84,7 @@ public abstract class GlobalVars {
 
 		/** The distance that agents can travel each turn. */
 		public static final double TRAVEL_PER_TURN = 81; // init: 50 Slower than average (about 2mph) but good for this simulation.
-//		KEJ+ it is speed of walk in meters per minute (1 minute=1 tick), which is 4.9 km/h according to Google Maps. It is important to understand that all speeds are in
+//		Lukasz Kowalski comment: it is speed of walk in meters per minute (1 minute=1 tick), which is 4.9 km/h according to Google Maps. It is important to understand that all speeds are in
 //		relation to this one. Which means that distance is made shorter later on, if we travel by car we divide distance by 6.76.
 	}
 	
@@ -119,19 +119,19 @@ public abstract class GlobalVars {
 		// must override function in RepastEdge because this is the one called by ShortestPath.
 		public static IAgent currentAgent = null;
 		public static Object currentBurglarLock = new Object();
-		//syncronised access to club KEJ+. like above - threading 'race conditions'
+		//syncronised access to club Lukasz Kowalski comment:. like above - threading 'race conditions'
 		
 		public static final String WALK = "walk";
 		public static final String BUS = "bus";
 //		public static final String TRAIN = "train";
 		public static final String CAR = "car";
 		// List of all transport methods in order of quickest first
-		public static final List<String> ALL_PARAMS = Arrays.asList(new String[]{CAR, BUS, WALK}); //KEJ+ change there was Train too
+		public static final List<String> ALL_PARAMS = Arrays.asList(new String[]{CAR, BUS, WALK}); //Lukasz Kowalski comment: change there was Train too
 
 		// Used in 'access' field by Roads to indicate that they are a 'majorRoad' (i.e. motorway or a-road).
 		public static final String MAJOR_ROAD = "majorRoad";		
 		// Speed advantage for car drivers if the road is a major road'
-		public static final double MAJOR_ROAD_ADVANTAGE = 3; //this is also a multiplier (at networkedge getSpeed() there is equation: Kej+ I commented it out at: NetworkEdge.getSpeed()
+		public static final double MAJOR_ROAD_ADVANTAGE = 3; //this is also a multiplier (at networkedge getSpeed() there is equation: Lukasz Kowalski comment: I commented it out at: NetworkEdge.getSpeed()
 
 		// The speed associated with different types of road (a multiplier, i.e. x times faster than walking)
 		// it is parameter, that controls the speed for car drivers and public transport passengers 
@@ -139,13 +139,13 @@ public abstract class GlobalVars {
 		// In my opinion (LK) all distances should be eventually pre-calculated, so that the model is really fast.
 		public static double getSpeed(String type) {
 			if (type.equals(WALK)) 
-				return 1; //kej+ it was 1 //Kej+ presumption, people travel 4,9 km/h or 81m/min according to GoogleMaps(my data are unreliable here, because of spatial units I used (walking distanes are very short)
+				return 1; //Lukasz Kowalski comment: it was 1 //Lukasz Kowalski comment: presumption, people travel 4,9 km/h or 81m/min according to GoogleMaps(my data are unreliable here, because of spatial units I used (walking distanes are very short)
 			else if (type.equals(BUS))
-				return 4.46; //it was 2 //Kej+  myData: passangers travel 22,3 km/h (st.dev=12,2) or 371 m/min (==m/tick) => multiplier=4.46 (watch out! this speed was based on google distance in km and jakdojade.pl site distance in min - but buses didn't had to go along fastest road option - however I think they usually did)
+				return 4.46; //it was 2 //Lukasz Kowalski comment:  myData: passangers travel 22,3 km/h (st.dev=12,2) or 371 m/min (==m/tick) => multiplier=4.46 (watch out! this speed was based on google distance in km and jakdojade.pl site distance in min - but buses didn't had to go along fastest road option - however I think they usually did)
 //			else if (type.equals(TRAIN))
 //				return 1000;
 			else if (type.equals(CAR))
-				return 6.76;//kej+ it was 3 //Kej+ myData: drivers travel 33,8 km/h (st.dev= 12,3) or 563m/min=> multiplier=6.76
+				return 6.76;//Lukasz Kowalski comment: it was 3 //Lukasz Kowalski comment: myData: drivers travel 33,8 km/h (st.dev= 12,3) or 563m/min=> multiplier=6.76
 			else {
 				LOGGER.log(Level.SEVERE, "Error getting speed: unrecognised type: "+type);
 				System.out.print("transport_params- ups!!!");
@@ -184,7 +184,7 @@ public abstract class GlobalVars {
 	public static boolean loggerOn=false; // it works only for Route.java now and for most things at ContextManager 
 	// model_log.txt is 500 mb big after 2 fitness simulations!!!
 	
-	public static String selectedFacilityType; //TODO CHANGE WITH MYsPORT
+	public static String selectedFacilityType; 
 	public static String displayMovement;
 	
 	public static boolean teleportationOn; //we skip all routing here

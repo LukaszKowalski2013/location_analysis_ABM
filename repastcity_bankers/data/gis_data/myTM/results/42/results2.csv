@@ -6,12 +6,12 @@
  minRankBus, 0.00799
  trafficImpact, 0.1
  busStopDistanceImpact, 150.0
-Happyagents, 6505
- sadOnes, 1296
+Happyagents, 4112
+ sadOnes, 257
 END_TIME, 10000
- car correlation, 0.6141109818538731
- bus correlation, 0.9906071474972747
-ChiSquareTest, 124.21855968071837
-carCorrSpearman, 0.8510677611520905
-busCorrSpearman, 0.9642857142857143
-simChi2: [915, 2149, 344, 997, 1761, 339]
+ car correlation, 0.7357176542158966
+ bus correlation, 0.9064834028505651
+ChiSquareTest, 14.74898852675362
+carCorrSpearman, 0.8219178082191783
+busCorrSpearman, 0.934148484292342
+simChi2: [393, 2026, 1200, 140, 325, 28]

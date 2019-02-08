@@ -89,7 +89,7 @@ public interface IAgent {
 	boolean isAvailableTransport(String transport);
 	
 	
-	void setPracticedToday(int b); //Kej+
+	void setPracticedToday(int b); //Lukasz Kowalski comment:
 
 	void setCrowdAwareness(double[][] clubCrowdMatrix, double hourOfResetEntries);
 

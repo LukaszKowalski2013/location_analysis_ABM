@@ -40,7 +40,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
-import java.util.logging.Logger; //KEJ+ if (GlobalVars.loggerOn) {
+import java.util.logging.Logger; //Lukasz Kowalski comment: if (GlobalVars.loggerOn) {
 
 import au.com.bytecode.opencsv.CSVWriter;
 
@@ -145,7 +145,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	int numberOfFitness=0;
 	int carDrivers=0;
 	int busPassengers=0;
-	int recordRuns=1; //KEJ+ TEMP
+	int recordRuns=1;
 	int myEndTime;
 
 	public static double chosenLocationIdClub=42;//if this number is <3000 (e.g. 42) we don't check any new location. Otherwise we check  certain club with idClub indicated by this number.
@@ -208,7 +208,6 @@ public class ContextManager implements ContextBuilder<Object> {
 						+ buildingFile);
 			}
 
-			// TODO Cast the buildings to their correct subclass
 
 			// Create the Roads - context and geography
 			roadContext = new RoadContext();
@@ -293,14 +292,14 @@ public class ContextManager implements ContextBuilder<Object> {
 			LOGGER.log(Level.SEVERE, "Could not find a parameter required to create the schedule.", e);
 			return null;
 		}
-		// create distance matrixes //Kej+
+		// create distance matrixes //Lukasz Kowalski comment:
 		MyMatrixes.parseAllMatrixes();
 
 		numberOfPools=0;
 		numberOfFitness=0;
 		carDrivers=0;
 		busPassengers=0;
-		// here we want to count number of swimming pools and fitness centres and pass this information to GlobalVars //KEJ+ check
+		// here we want to count number of swimming pools and fitness centres and pass this information to GlobalVars //Lukasz Kowalski comment: check
 		for (Building b : ContextManager.buildingContext.getObjects(Building.class)) {
 			if (b.getType()==3){
 
@@ -366,7 +365,7 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * @throws ParameterNotFoundException 
 	 * @throws NumberFormatException */
 	void setchosenLocationIdClub() throws NumberFormatException, ParameterNotFoundException{
-		int newLocationsIdClub = ContextManager.getParameter("newLocationsIdClub"); //KEJ+
+		int newLocationsIdClub = ContextManager.getParameter("newLocationsIdClub"); //Lukasz Kowalski comment:
 		chosenLocationIdClub= (double)newLocationsIdClub;
 	}
 
@@ -394,8 +393,8 @@ public class ContextManager implements ContextBuilder<Object> {
 	 * @param numberOfRuns */
 	public void outputAgentsData(int numberOfRuns) throws NoIdentifierException, IOException { //IT WAS 
 		//old outputBurglaryData
-		numberOfRuns=recordRuns;//TEMP KEJ+
-		recordRuns++; //TEMP KEJ+
+		numberOfRuns=recordRuns;
+		recordRuns++; 
 		StringBuilder dataToWrite = new StringBuilder(); // Build a string so all data can be written at once.
 		StringBuilder dataToWrite1 = new StringBuilder(); // Build a string so all data can be written at once.
 		StringBuilder dataToWrite2 = new StringBuilder();
@@ -416,26 +415,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 		dataToWrite.append(currentParameters);
 
-
-		//	        dataToWrite.append("ClubID, NumOfClients\n"); // This is the header for the csv file
-		// Now iterate over all the houses       
-		//	        for (Building b : ContextManager.buildingContext.getObjects(Building.class)) {
-		//	        	if (GlobalVars.mySport=="swimming"){
-		//	        		if (b.getType()==3 && b.getSwimming()==1) { // Ignore buildings that aren't houses (type 1)
-		//	        			// Write the number of burglaries for this house
-		//	        			dataToWrite.append((int)b.getClubID() + ", " + b.getNumOfClientEntries() + "\n"); //we use ; and castig to int in order to have beautiful excel files in my continental Windows system
-		//	        		} // if
-		//	        	}
-		//	        	else if (GlobalVars.mySport=="fitness"){
-		//	        		if (b.getType()==3 && b.getFitness()==1) { // Ignore buildings that aren't houses (type 1)
-		//	        			// Write the number of burglaries for this house
-		//	        			dataToWrite.append((int)b.getClubID() + ", " + b.getNumOfClientEntries() + "\n"); //we use ; and castig to int in order to have beautiful excel files in my continental Windows system
-		//	        		} // if
-		//	        	}
-		//	        } // for
-
-
-
+		
 		//set variables for SPORT SPLIT
 		double[][] AUTO=null; 
 		double[][] MPK=null;
@@ -481,7 +461,6 @@ public class ContextManager implements ContextBuilder<Object> {
 			// 1st for loop
 			// sum up agents 'my times'
 			// values in 1st row of myTimesReport: {6, 7, 8, 9, 10, 16, 17, 18, 19, 20, 21}
-			// TODO map it
 			for (int i=0; i< myTimesReport[0].length ; i++){
 				if (a.getMyTime1()==myTimesReport[0][i]){
 					myTimesReport[1][i]+=1;
@@ -632,8 +611,7 @@ public class ContextManager implements ContextBuilder<Object> {
 		for(int i=0;i<realDistancesBus.length;i++){
 			currentDistancesBus[i]=distanceDecay[2][i];
 		}
-//		double[] currentDistancesCar = distanceDecay[1]; //OLD CODE [FOR EQUAL SIZES OF ALL 4 ARRAYS
-//		double[] currentDistancesBus= distanceDecay[2];	        
+       
 
 		double carCorr = new PearsonsCorrelation().correlation(realDistancesCar, currentDistancesCar);
 		double busCorr = new PearsonsCorrelation().correlation(realDistancesBus, currentDistancesBus);	        
@@ -648,8 +626,6 @@ public class ContextManager implements ContextBuilder<Object> {
 
 		dataToWrite.append("\n"+" car correlation, " + carCorr  + "\n"
 				+" bus correlation, "+	busCorr  + "\n"
-//				+ "carMannUTest, " + carMannUTest + "\n"
-				//				+ "busMannUTest, " + busMannUTest+ "\n"
 				+ "ChiSquareTest, " + ChiSquareTest + "\n"
 				+ "carCorrSpearman, " + carCorrSpearman + "\n"
 				+ "busCorrSpearman, " + busCorrSpearman + "\n"
@@ -671,7 +647,7 @@ public class ContextManager implements ContextBuilder<Object> {
 		//1 auto&mpk x club results
 		for (int i = 0; i < AUTO.length; i++){
 			for (int j = 0; j < AUTO[0].length; j++){
-				dataToWrite1.append((int)AUTO[i][j]+", ");//RECENTLY we use commas to have nice excel files. // in continental version we should use ';' and castig to int in order to have beautiful excel files in my continental Windows system
+				dataToWrite1.append((int)AUTO[i][j]+", ");//RECENTLY we use commas to have nice excel files.
 				dataToWrite2.append((int)MPK[i][j]+", ");
 			}
 			dataToWrite1.append("\n");
@@ -736,7 +712,7 @@ public class ContextManager implements ContextBuilder<Object> {
 		// And log the data as well so we can see it on the console.
 		LOGGER.info(dataToWrite.toString());
 
-		numberOfDays = 0; //KEJ+ number of days will restart after this function - it did not before
+		numberOfDays = 0; //Lukasz Kowalski comment: number of days will restart after this function - it did not before
 		realTime=0;
 
 		// here we try to reset memory to prevent leaks
@@ -758,7 +734,7 @@ public class ContextManager implements ContextBuilder<Object> {
 		crowdInClubs = crowdInClubs +numberOfDays+", "+hourOfResetEntries+", ";
 
 		for (Building b : ContextManager.buildingContext.getObjects(Building.class)) {
-			if (b.getType()==3 ) { //&& b.getSwimming()==1 //it resets every club building, but anyway we don't have so much buildings to worry about that//KEJ+ potential optimisation point - we can make a list of this clubs before
+			if (b.getType()==3 ) { //&& b.getSwimming()==1 //it resets every club building, but anyway we don't have so much buildings to worry about that//Lukasz Kowalski comment: potential optimisation point - we can make a list of this clubs before
 				if(b.getSwimming()==1 && GlobalVars.mySport=="swimming"){
 
 					//step 1
@@ -818,7 +794,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 		// THE CODE TO SCHEDULE THE outputBurglaryData() FUNCTION SHOULD GO HERE
 		// Schedule the outputBurglaryData() function to be called at the end of the simulation
-		int numberOfRuns = Integer.parseInt(ContextManager.getParameter("numberOfRuns").toString()); //KEJ+
+		int numberOfRuns = Integer.parseInt(ContextManager.getParameter("numberOfRuns").toString()); //Lukasz Kowalski comment:
 		ScheduleParameters params = ScheduleParameters.createAtEnd(ScheduleParameters.LAST_PRIORITY);
 		//		schedule.schedule(params, this, "outputBurglaryData", numberOfRuns);
 		schedule.schedule(params, this, "outputAgentsData", numberOfRuns);
@@ -830,7 +806,7 @@ public class ContextManager implements ContextBuilder<Object> {
 		//				"printTicks");
 
 		//TEMP this has to wait until agents will COME to club at full hours, e.g. 7, 16...
-		// Kej+ reset entries for every club every x time(here an hour).
+		// Lukasz Kowalski comment: reset entries for every club every x time(here an hour).
 		// one day =1441 ticks , 1 hour = 60 ticks, 30 minutes = 30 ticks, but add 1 everywhere t get precise time
 		schedule.schedule(ScheduleParameters.createRepeating(391, 1441), this,
 				"resetEntries");//6:30
@@ -870,7 +846,7 @@ public class ContextManager implements ContextBuilder<Object> {
 		 * a separate function that steps them in different threads. This massively improves performance on multi-core
 		 * machines.
 		 */
-		boolean isThreadable = false; //KEJ+ I changed it
+		boolean isThreadable = false; //Lukasz Kowalski comment: I changed it
 		for (IAgent a : agentContext.getObjects(IAgent.class)) {
 			if (!a.isThreadable()) {
 				isThreadable = false;
@@ -879,7 +855,7 @@ public class ContextManager implements ContextBuilder<Object> {
 		}
 
 		if (ContextManager.TURN_OFF_THREADING) { // Overide threading?
-			isThreadable = false; //KEJ+ change
+			isThreadable = false; //Lukasz Kowalski comment: change
 		}
 		if (isThreadable && (Runtime.getRuntime().availableProcessors() > 1)) {
 			/*
@@ -1240,7 +1216,7 @@ public class ContextManager implements ContextBuilder<Object> {
 
 	/* Variables to represent the real time in decimal hours (e.g. 14.5 means 2:30pm) and a method, called at every
 	 * iteration, to update the variable. */
-	public static double realTime = 0.0; // (start at 0am) //Kej+ change to 0
+	public static double realTime = 0.0; // (start at 0am) //Lukasz Kowalski comment: change to 0
 	public static int numberOfDays = 0; // It is also useful to count the number of days.
 
 	@ScheduledMethod(start=1, interval=1, priority=10)
