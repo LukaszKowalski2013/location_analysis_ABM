@@ -9,4 +9,4 @@ This ABM model was designed for the purpose of my Ph.D. thesis: Modelling the be
 
 
 (...)
-Full version of this readme file is present in ods & excel files.
+Full version of this readme file is present in README.odt & in README.xlsx.
